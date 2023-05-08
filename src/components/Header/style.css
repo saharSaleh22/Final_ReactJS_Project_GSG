@@ -1,0 +1,73 @@
+
+.h-wrapper{
+  background: white;
+  background: linear-gradient(#c3b2aa, #c3b2aa);
+        content: "";
+  
+        
+}
+.h-container{
+    justify-content: flex-start;
+
+    color: white;
+    position: relative;
+    z-index: 1;
+    margin: 0 auto;
+    max-width: 900px;
+  
+    
+}
+.h-container button{
+    justify-content: flex-start;
+       background-color: #713A3A;
+    color: white;
+    border: none;
+    position: relative;
+    z-index: 1;
+    margin: 0 auto;
+    max-width: 900px;
+  
+    
+}
+.h-container:before{
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width:95%;
+    height: 55%;
+    background: #713A3A;
+    border-radius: 0 0 50% 50% / 0 0 100% 100%;
+    transform: scale(1.9);
+    z-index: 8;
+}
+
+.h-container img{
+    z-index: 9;  
+    margin-right: 20%; 
+    padding-right: 5%;
+    margin-bottom: 5%;
+}
+.h-menu{
+    gap: 2rem;
+    z-index: 9;
+    margin-bottom: 5%; 
+}
+a{
+    text-decoration: none;
+    color: white;
+    font-size: 1.4rem;
+    z-index: 9;
+
+}
+.h-menu>*:hover{
+    cursor: pointer;
+    z-index: 9;
+}
+.flexCenter1 {
+    display: flex;
+   
+
+
+  }
+
