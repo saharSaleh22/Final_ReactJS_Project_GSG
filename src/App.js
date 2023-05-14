@@ -1,24 +1,28 @@
-import logo from './logo.svg';
-import './App.css';
+import logo from "./logo.svg";
+import "./App.css";
+import Header from "./components/Header";
+import Login from "./components/Login";
 
+import Hero from "./components/hero";
+import ProductsHome from "./components/ProductsHomePage";
+import { red } from "@mui/material/colors";
+import { ThemeProvider, createTheme } from "@mui/material/styles";
+import Poppins from "./components/Poppins/Poppins-Light.ttf";
+import Router from "./Router";
+const theme = createTheme({
+  typography: {
+    fontFamily: ["Crimson Text"].join(","),
+    fontSize: 16,
+  },
+});
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <ThemeProvider theme={theme}>
+      {/* <Header/>
+      <Hero/>
+      <ProductsHome/> */}
+      <Router />
+    </ThemeProvider>
   );
 }
 
