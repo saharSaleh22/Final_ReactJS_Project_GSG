@@ -1,10 +1,12 @@
 import React from "react";
-import logo from '../../images/logo.png';
-import './styles_2.css'
-function Title  (props)  {
-  return (
-    <h2 className={props.class}>{props.type=="signin"?"Sign In":"Sign Up"}</h2>
+import "./styles_2.css";
+import Typography from "@mui/material/Typography";
 
+function Title(props) {
+  return (
+    <Typography variant="h4" className={props.class} gutterBottom>
+      {props.type == "signin" ? "Sign In" : "Sign Up"}
+    </Typography>
   );
-};
+}
 export default Title;

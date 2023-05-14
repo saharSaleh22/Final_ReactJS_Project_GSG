@@ -1,5 +1,6 @@
 import React from "react";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {Stack,Typography} from '@mui/material';
+
 import { faUser, faLock, faEnvelope } from "@fortawesome/free-solid-svg-icons";
 import {
   faFacebook,
@@ -9,7 +10,6 @@ import {
 import SocialIcons from "./SocialIcons";
 import Input from "./Input";
 import Title from "../Texts/Title";
-import SmallText from "../Texts/smallText";
 import Submit from "./SubmitButton";
 const AuthForm = (props) => {
   return (
@@ -21,15 +21,18 @@ const AuthForm = (props) => {
         {props.type=="signup"?  <Input type="password" placeholder="Email" icon={faEnvelope} />:<></>}
      <Input type="password" placeholder="Password" icon={faLock} />
      <Submit type="submit" value={props.type=="signin"?"login":"sign up"} class="btn solid"/>
-      <SmallText text="or Sign in with social platforms" />
-    
-      <div className="socialMedia">
+      <Typography variant="subtitle1" gutterBottom>
+      or Sign in with social platforms
+      </Typography>
+      <Stack direction="row" spacing={2}>
       <SocialIcons icon={faFacebook}/>
       <SocialIcons icon={faTwitter}/>
       <SocialIcons icon={faInstagram}/>
       <SocialIcons icon={faEnvelope}/>
+      </Stack>
+    
      
-      </div>
+  
     </form>
   );
 };

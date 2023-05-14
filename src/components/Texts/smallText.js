@@ -1,9 +1,12 @@
 import React from "react";
-import logo from '../../images/logo.png';
-import './styles_2.css'
-function SmallText  (props)  {
+import "./styles_2.css";
+import Typography from "@mui/material/Typography";
+
+function SmallText(props) {
   return (
-    <p className={props.className}>{props.text} </p>
+    <Typography variant="subtitle1" className={props.className} gutterBottom>
+      {props.text}
+    </Typography>
   );
-};
+}
 export default SmallText;

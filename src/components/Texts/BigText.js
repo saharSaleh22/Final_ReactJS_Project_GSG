@@ -1,9 +1,12 @@
 import React from "react";
-import logo from '../../images/logo.png';
-import './styles_2.css'
-function BigText  (props)  {
+import "./styles_2.css";
+import Typography from "@mui/material/Typography";
+
+function BigText(props) {
   return (
-    <h3 >{props.text}</h3>
+    <Typography variant="h5" gutterBottom>
+      {props.text}
+    </Typography>
   );
-};
+}
 export default BigText;

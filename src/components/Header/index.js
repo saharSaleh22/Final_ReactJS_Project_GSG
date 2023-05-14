@@ -2,29 +2,32 @@ import React from "react";
 import logo from "../../images/Moderno_logo1.png";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import PersonIcon from "@mui/icons-material/Person";
+import Box from "@mui/material/Box";
+import MenuIcon from "@mui/icons-material/Menu";
 import "./style.css";
+import MenuItem from "./MenuItem";
+
 const Header = () => {
   return (
     <section className="h-wrapper">
-      <div className="flexCenter1 paddings  h-container">
+      <Box className="flexCenter1 paddings  h-container">
+
         <img src={logo} alt="" width={120} />
-        <div className="flexCenter h-menu">
-          <a href="">item1</a>
-          <a href="">our values</a>
-          <a href="">contact us</a>
-          <a href="">get started</a>
-          <button onClick={""}>
-            <PersonIcon sx={{ ml: 2 }} /> 
-          </button>
-         
-          <button onClick={""}>
-            <ShoppingCartIcon />
-          </button>
-          {/* <button className="button">
-            <a href="">Contact</a>
-          </button>{" "} */}
-        </div>
-      </div>
+        <input className="check" type="checkbox" id="toggle"></input>
+        <label className="toggler" for="toggle">
+          <MenuIcon />
+        </label>
+        <Box className="flexCenter h-menu">
+          <MenuItem href={"any/link"} item={"Home Page"} />
+          <MenuItem href={"any/link"} item={"shipping"} />
+          <MenuItem href={"any/link"} item={"products"} />
+          <MenuItem href={"any/link"} item={"orders "} />
+          <MenuItem href={"any/link"} item={<PersonIcon sx={{ ml: 2 }} /> }/>
+          <MenuItem href={"any/link"} item={<ShoppingCartIcon sx={{ ml: 2 }} /> }/>
+
+
+        </Box>
+      </Box>
     </section>
   );
 };
