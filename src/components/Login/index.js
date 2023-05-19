@@ -1,7 +1,7 @@
 import { React, useState } from "react";
 import "./styles.css";
 import Box from "@mui/material/Box";
-import AuthForm from "./AuthForm";
+import AuthForm from "./AuthForm/AuthForm";
 import Panel from "./Panel";
 const Login = () => {
   const [isSignUpMode, setSignUpMode] = useState(false);

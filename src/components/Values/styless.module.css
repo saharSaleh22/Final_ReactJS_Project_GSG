@@ -1,0 +1,16 @@
+.vContainer{
+    flex: 1;
+    justify-content: space-between;
+}
+.vRight{
+    margin-left: 10.0rem;
+
+    gap: 1.5rem;
+}
+@media (max-width: 870px) {
+    .vRight{
+        margin-left: 2.0rem;
+    
+        gap: 1.5rem;
+    }
+}

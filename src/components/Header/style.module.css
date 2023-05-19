@@ -1,0 +1,109 @@
+
+.hwrapper{
+
+  content: "";    
+}
+
+
+.hcontainer{
+    justify-content: flex-start;
+    color: white;
+    position: relative;
+    z-index: 1;
+    margin: 0 auto;
+    max-width: 940px;  
+     
+}
+.hcontainer:before{
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width:90%;
+    height: 55%;
+    background: #713A3A;
+    border-radius: 0 0 50% 50% / 0 0 100% 100%;
+    transform: scale(1.9);
+    z-index: 8;
+    
+}
+
+.hcontainer img{
+    z-index: 9;  
+    margin-right: 20%; 
+    padding-right: 5%;
+    margin-bottom: 5%;
+}
+.hmenu{
+    gap: 2rem;
+    z-index: 9;
+    margin-bottom: 5%; 
+    
+}
+
+.hmenu>*:hover{
+    cursor: pointer;
+    z-index: 9;
+}
+.flexCenter1 {
+    display: flex;
+  }
+  
+
+  @media(max-width:675px)
+  {
+      .hmenu{
+          display: grid;
+          position: absolute;
+          color: #713A3A;
+          width: 70%;
+          background: white;
+          bottom: -250px;
+          transition: all 0.5s ease;
+          margin-left: 15%;
+          left: 0;
+          transform: translateY(-100%);
+       
+      }  
+   
+      .toggler{
+          
+      display: grid !important;
+      padding-left: 45%;
+  
+  }
+  .check:not(:checked) ~ .hmenu {
+      opacity: 0;
+    }
+  }
+  .toggler{
+      display: none;
+      height: min-content;
+      margin: 18px -10px 0 0 ;
+      cursor: pointer;
+      z-index: 9;
+      transition: .6s;
+  }
+  .check {
+      display: none;
+      z-index: 9;
+      color: #000;
+    
+  }
+  
+  .check:checked ~ .hmenu{
+      transform:translateY(0);
+
+  } 
+   .check:checked ~ .toggler{
+      transform: rotateY(90deg);
+      transform: rotateX(45deg);
+  }
+  .check:checked ~ a:hover{
+      background-color: #c3b2aa;
+  
+  }
+  .check:checked ~ .hmenu a{
+      background: white;
+  }
+  

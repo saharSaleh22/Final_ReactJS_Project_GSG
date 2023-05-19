@@ -1,12 +1,13 @@
 import React from "react";
-import {Stack,Box} from '@mui/material';
+import { Box } from "@mui/material";
+
+import styles from "./styles.module.css";
 
 function ImageHomePage(props) {
   return (
-
-    <Box className="image-container">
-            <img src={props.background} alt="" />
-          </Box>
+    <Box className={styles.imageContainer}>
+      <img src={props.background} alt="" />
+    </Box>
   );
 }
 export default ImageHomePage;
