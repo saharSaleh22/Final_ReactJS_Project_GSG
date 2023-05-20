@@ -1,7 +1,7 @@
-import slide_image_1 from "../../images/p1.jpg";
-import slide_image_2 from "../../images/p2.jpg";
-import slide_image_3 from "../../images/p3.jpg";
-import slide_image_4 from "../../images/p4.jpg";
+import slide_image_1 from "../../assets/p1.jpg";
+import slide_image_2 from "../../assets/p2.jpg";
+import slide_image_3 from "../../assets/p3.jpg";
+import slide_image_4 from "../../assets/p4.jpg";
 const Data = [
   {
     title: "Modern Sofa",

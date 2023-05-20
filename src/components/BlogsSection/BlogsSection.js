@@ -7,14 +7,19 @@ import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
 import MyCarousel from "../Carousel/Carousel.js";
-import { Box } from "@mui/material";
+import { Box, Stack } from "@mui/material";
+import { ButtonForProduct } from "../../StyledComponents.js";
 
 const BlogsSection = (props) => {
   return (
     <Box className="paddings innerWidth" sx={{ pb: 9 }}>
-      <Typography variant="h5" gutterBottom>
+      <Stack direction={"row"} sx={{justifyContent:"space-between"}}>
+        <Typography variant="h5" gutterBottom>
         Recent Blogs
       </Typography>
+      <ButtonForProduct value={"view all products"}/>
+      </Stack>
+      
 
       <MyCarousel items={3}>
         {Data.map((card, i) => (

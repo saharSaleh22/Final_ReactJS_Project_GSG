@@ -1,7 +1,7 @@
 import { React } from "react";
 import styles from "./styless.module.css";
 import ImageHomePage from "../ImageHomePage";
-import background from "../../images/p4.jpg";
+import background from "../../assets/p4.jpg";
 import ContactRight from "./ContactRight";
 import { Box } from "@mui/material";
 

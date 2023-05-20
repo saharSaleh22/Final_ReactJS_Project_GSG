@@ -1,6 +1,6 @@
 import { React } from "react";
 import ImageHomePage from "../ImageHomePage";
-import background from "../../images/p2.jpg";
+import background from "../../assets/p2.jpg";
 import ValueRight from "./ValueRight";
 import styles from "./styless.module.css";
 

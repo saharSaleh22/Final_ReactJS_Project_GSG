@@ -3,7 +3,7 @@ import Header from "../Header";
 import Box from "@mui/material/Box";
 import Paper from "@mui/material/Paper";
 import { styled } from "@mui/material/styles";
-import slide_image_4 from "../../images/p5.jpg";
+import slide_image_4 from "../../assets/p5.jpg";
 import Details from "./Details";
 import { Stack, useMediaQuery, useTheme } from "@mui/material";
 function SingleProduct() {

@@ -1,5 +1,5 @@
 import React from "react";
-import background from "../../../images/background.jpg";
+import background from "../../../assets/background.jpg";
 import Box from "@mui/material/Box";
 
 import ImageHomePage from "../../ImageHomePage";

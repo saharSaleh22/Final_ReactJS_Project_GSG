@@ -1,5 +1,5 @@
 import React from "react";
-import logo from "../../images/Moderno_logo1.png";
+import logo from "../../assets/Moderno_logo1.png";
 import Box from "@mui/material/Box";
 import MenuIcon from "@mui/icons-material/Menu";
 import styles from "./style.module.css";
