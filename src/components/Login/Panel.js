@@ -3,10 +3,10 @@ import "./styles.css";
 import BigText from "../Texts/BigText";
 import SmallText from "../Texts/smallText";
 import Button from "./Button/Button";
-import sign from "../../images/signnn.svg";
+import sign from "../../assets/signnn.svg";
 import { Box } from "@mui/material";
 
-import login from "../../images/loginBack.svg";
+import login from "../../assets/loginBack.svg";
 function Panel(props) {
   return (
     <Box

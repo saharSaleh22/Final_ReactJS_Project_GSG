@@ -6,6 +6,7 @@ import { styled } from "@mui/material/styles";
 import slide_image_4 from "../../assets/p5.jpg";
 import Details from "./Details";
 import { Stack, useMediaQuery, useTheme } from "@mui/material";
+import { StyledItem } from "../../StyledComponents";
 function SingleProduct() {
   const theme = useTheme();
   theme.breakpoints.customTablet = "@media (min-width: 900px)"; // Adjust the breakpoint value according to your needs
@@ -16,13 +17,6 @@ function SingleProduct() {
   const flexDirection = isMobile ? "column" : isTablet ? "row" : "column";
   const width = isMobile ? "100%" : isTablet ? "50%" : "90%";
   console.log(width);
-  const Item = styled(Paper)(({ theme }) => ({
-    backgroundColor: theme.palette.mode === "dark" ? "#1A2027" : "#fff",
-    ...theme.typography.body2,
-    padding: theme.spacing(1),
-    textAlign: "center",
-    color: theme.palette.text.secondary,
-  }));
 
   return (
     <>
@@ -36,7 +30,7 @@ function SingleProduct() {
         }}
       >
         <Stack sx={{ width: "100%" }} spacing={0} direction={flexDirection}>
-          <Item sx={{ width: width }}>
+          <StyledItem sx={{ width: width }}>
             <img
               src={slide_image_4}
               width="100%"
@@ -44,7 +38,7 @@ function SingleProduct() {
               style={{ objectFit: "cover" }}
               alt=""
             />
-          </Item>
+          </StyledItem>
           <Details width={width} />
         </Stack>
       </Box>

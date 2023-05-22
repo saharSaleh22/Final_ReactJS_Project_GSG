@@ -35,7 +35,7 @@ let customTheme = createTheme({
     light: '#fff',
     main: '#F1F1F1',
     dark: 'gray',
-    contrastText: 'rgba(0, 0, 0, 0.87)',
+    hover: '#efe3dd',
   },
 
 },

@@ -2,7 +2,7 @@ import React from "react";
 
 import Grid from "@mui/material/Grid";
 import { Stack, Typography } from "@mui/material";
-import ContactItem from "../../StyledComponents";
+import {ContactItem} from "../../StyledComponents";
 import ProductButton from "../ProductsHomePage/ProductButton";
 function SingleContactItem(props) {
   return (

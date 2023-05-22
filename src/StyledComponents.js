@@ -1,75 +1,80 @@
 import { styled } from "@mui/material/styles";
 import Paper from "@mui/material/Paper";
 import customTheme from "./theme";
-import { Box, Button, Divider, Link } from "@mui/material";
+import { Box, Button, Card, Divider, Link, Typography } from "@mui/material";
 
-const ContactItem = styled(Paper)(({ theme }) => ({
+export const ContactItem = styled(Paper)(({ theme }) => ({
   padding: theme.spacing(1),
   textAlign: "center",
 }));
-export default ContactItem;
 
-const HeroTitle = styled(Box)(({ theme }) => ({
+export const HeroTitle = styled(Box)(({ theme }) => ({
   padding: theme.spacing(1),
-  variant: "h3",
-  background: customTheme.palette.secondary.main,
-  fontSize: 60,
+  background: theme.palette.secondary.main,
   border: "none",
-  fontWeight: 600,
   position: "relative",
   textAlign: "start",
   mt: "12%",
-  color: customTheme.palette.primary.main,
   mb: "5%",
 }));
-export { HeroTitle };
 
-const MenuItemLink = styled(Link)(({ theme }) => ({
-  color: "#fff",
+export const HeroTypography = styled(Typography)(({ theme }) => ({
+  fontSize: 60,
+  fontWeight: 600,
+  color: theme.palette.primary.main,
+}));
+
+export const MenuItemLink = styled(Link)(({ theme }) => ({
+  color: theme.palette.custom.light,
   fontSize: 20,
   textDecoration: "none",
   borderBottom: "2px solid transparent",
   "&:hover": {
-    borderBottomColor: customTheme.palette.custom.light,
+    borderBottomColor: theme.palette.custom.light,
   },
-  "@media (max-width:675px)": {
-    color: customTheme.palette.primary.main,
+  [theme.breakpoints.down("sm")]: {
+    color: theme.palette.primary.main,
     justifyContent: "center",
     "&:hover": {
-      borderBottomColor: customTheme.palette.primary.main,
+      borderBottomColor: theme.palette.primary.main,
     },
   },
 }));
-export { MenuItemLink };
 
-const ButtonForProduct = styled(Button)(({ theme }) => ({
+export const ButtonForProduct = styled(Button)((props) => ({
   background: customTheme.palette.primary.main,
   color: customTheme.palette.custom.light,
-  paddingTop: 1.4,
-  paddingBottom: 1.4,
-  paddingLeft: 4,
-  paddingRight: 2,
+  padding: "1.4px 2px 1.4px 4px",
   marginBottom: 2,
   marginLeft: "15%",
-  width: "70%",
+  width: props.width === "10%" ? props.width : "70%",
   textTransform: "lowercase",
   fontSize: 16,
   ":hover": { background: customTheme.palette.custom.dark },
 }));
-export { ButtonForProduct };
-const DetailsItem = styled(Paper)(({ theme }) => ({
+export const DetailsItem = styled(Paper)(({ theme }) => ({
   padding: theme.spacing(3),
   background: customTheme.palette.custom.main,
 }));
 
-export { DetailsItem };
-
-const MyDivider = styled(Divider)(({ theme }) => ({
- 
-
+export const MyDivider = styled(Divider)(({ theme }) => ({
   borderWidth: "1px",
   width: "200%",
   backgroundColor: customTheme.palette.custom.light,
 }));
 
-export { MyDivider };
+export const StyledCard = styled(Card)(({}) => ({
+  maxWidth: 380,
+  borderRadius: 4,
+  background: customTheme.palette.secondary.light,
+
+  ":hover": { background: customTheme.palette.custom.hover },
+}));
+
+ export const StyledItem = styled(Paper)(({ theme }) => ({
+  backgroundColor: theme.palette.mode === "dark" ? "#1A2027" : "#fff",
+  ...theme.typography.body2,
+  padding: theme.spacing(1),
+  textAlign: "center",
+  color: theme.palette.text.secondary,
+}));

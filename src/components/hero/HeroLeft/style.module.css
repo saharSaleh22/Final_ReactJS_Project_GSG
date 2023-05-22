@@ -1,6 +1,6 @@
 
 .heroLeft {
- 
+    padding-top: 7%;
     flex-direction: column;
     justify-content: start;
 }

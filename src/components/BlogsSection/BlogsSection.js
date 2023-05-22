@@ -8,29 +8,24 @@ import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
 import MyCarousel from "../Carousel/Carousel.js";
 import { Box, Stack } from "@mui/material";
-import { ButtonForProduct } from "../../StyledComponents.js";
+import { ButtonForProduct, StyledCard } from "../../StyledComponents.js";
 
 const BlogsSection = (props) => {
   return (
     <Box className="paddings innerWidth" sx={{ pb: 9 }}>
-      <Stack direction={"row"} sx={{justifyContent:"space-between"}}>
+      <Stack direction={"row"} sx={{ justifyContent: "space-between", mb: 5 }}>
         <Typography variant="h5" gutterBottom>
-        Recent Blogs
-      </Typography>
-      <ButtonForProduct value={"view all products"}/>
+          Recent Blogs
+        </Typography>
+        <ButtonForProduct size="small" width={"10%"}>
+          view all Blogs
+        </ButtonForProduct>
       </Stack>
-      
 
       <MyCarousel items={3}>
         {Data.map((card, i) => (
-          <Card
-            sx={{
-              maxWidth: 380,
-              borderRadius: 4,
-              background: customTheme.palette.secondary.light,
-
-              ":hover": { background: "#efe3dd" },
-            }}
+          <StyledCard
+            
           >
             <CardMedia
               sx={{ maxWidth: 360, borderRadius: 4, m: 1 }}
@@ -44,7 +39,7 @@ const BlogsSection = (props) => {
                 {card.description}
               </Typography>
             </CardContent>
-          </Card>
+          </StyledCard>
         ))}
       </MyCarousel>
     </Box>

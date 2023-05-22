@@ -10,15 +10,21 @@ import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
 import ProductButton from "./ProductButton.js";
 import MyCarousel from "../Carousel/Carousel.js";
+import { ButtonForProduct } from "../../StyledComponents.js";
+import { Stack } from "@mui/material";
 
 const ProductsHome = (props) => {
   return (
     <section>
       <div className="paddings innerWidth">
         <div className={styles.rHead}>
-          <Typography variant="h5" gutterBottom>
-            Products
-          </Typography>
+        <Stack direction={"row"}  sx={{justifyContent:"space-between",mb:3}}>
+        <Typography variant="h5" gutterBottom>
+        Products
+      </Typography>
+      <ButtonForProduct size="small" width={"10%"} >view all Products</ButtonForProduct>
+   
+      </Stack>
         </div>
         <MyCarousel items={4}>
           {Data.map((card, i) => (
