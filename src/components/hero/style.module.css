@@ -1,0 +1,14 @@
+.heroWrapper{
+   
+    position: relative;
+    padding-bottom:2rem ;
+    background: linear-gradient(#fbf3ef, #e1e2df);
+}
+.heroContainer{
+ 
+    justify-content: space-between;
+    align-items: flex-start;
+
+}
+
+

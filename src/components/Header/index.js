@@ -1,34 +1,36 @@
 import React from "react";
-import logo from "../../images/Moderno_logo1.png";
-import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
-import PersonIcon from "@mui/icons-material/Person";
+import logo from "../../assets/Moderno_logo1.png";
 import Box from "@mui/material/Box";
 import MenuIcon from "@mui/icons-material/Menu";
-import "./style.css";
+import styles from "./style.module.css";
 import MenuItem from "./MenuItem";
+import Data from "./data";
+import customTheme from "../../theme";
 
-const Header = () => {
+function Header(props) {
   return (
-    <section className="h-wrapper">
-      <Box className="flexCenter1 paddings  h-container">
-
+    <Box
+      className={styles.hwrapper}
+      sx={{
+        background:
+          props.Inpage === "pages"
+            ? customTheme.palette.custom.light
+            : customTheme.palette.secondary.light,
+      }}
+    >
+      <Box className={`paddings ${styles.flexCenter1} ${styles.hcontainer}`}>
         <img src={logo} alt="" width={120} />
-        <input className="check" type="checkbox" id="toggle"></input>
-        <label className="toggler" for="toggle">
+        <input className={styles.check} type="checkbox" id="toggle"></input>
+        <label className={styles.toggler} for="toggle">
           <MenuIcon />
         </label>
-        <Box className="flexCenter h-menu">
-          <MenuItem href={"any/link"} item={"Home Page"} />
-          <MenuItem href={"any/link"} item={"shipping"} />
-          <MenuItem href={"any/link"} item={"products"} />
-          <MenuItem href={"any/link"} item={"orders "} />
-          <MenuItem href={"any/link"} item={<PersonIcon sx={{ ml: 2 }} /> }/>
-          <MenuItem href={"any/link"} item={<ShoppingCartIcon sx={{ ml: 2 }} /> }/>
-
-
+        <Box className={`flexCenter ${styles.hmenu}`}>
+          {Data.map((menu, i) => (
+            <MenuItem href={menu.href} item={menu.item} />
+          ))}
         </Box>
       </Box>
-    </section>
+    </Box>
   );
-};
+}
 export default Header;
