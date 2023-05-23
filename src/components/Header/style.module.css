@@ -52,6 +52,7 @@
 
   @media(max-width:675px)
   {
+   
       .hmenu{
           display: grid;
           position: absolute;

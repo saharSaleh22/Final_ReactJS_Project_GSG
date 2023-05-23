@@ -66,6 +66,7 @@ const Router = () => {
           <Route index element={<Login />} />
           <Route path="/HomePage" element={<HomePage />} />
           <Route path="/singleProduct" element={<SingleProduct />} />
+          <Route path="/HomePage/:id" element={<SingleProduct />} />
         </Route>
       </Routes>
     </BrowserRouter>

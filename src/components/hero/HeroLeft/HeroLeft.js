@@ -1,7 +1,7 @@
 import React from "react";
 import { Box } from "@mui/material";
 import SmallText from "../../Texts/smallText";
-import Button from "../../Login/Button/Button";
+import Button from "../../Login/Button";
 import styles from "./style.module.css";
 import { HeroTitle, HeroTypography } from "../../../StyledComponents";
 

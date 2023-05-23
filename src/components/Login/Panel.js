@@ -2,7 +2,7 @@ import React from "react";
 import "./styles.css";
 import BigText from "../Texts/BigText";
 import SmallText from "../Texts/smallText";
-import Button from "./Button/Button";
+import Button from "./Button";
 import sign from "../../assets/signnn.svg";
 import { Box } from "@mui/material";
 

@@ -1,4 +1,5 @@
 import React from "react";
+import "./styles.css";
 import ButtonMUI from "@mui/material/Button";
 
 function Button(props) {

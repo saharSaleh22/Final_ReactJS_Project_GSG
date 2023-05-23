@@ -46,8 +46,9 @@ export const ButtonForProduct = styled(Button)((props) => ({
   color: customTheme.palette.custom.light,
   padding: "1.4px 2px 1.4px 4px",
   marginBottom: 2,
-  marginLeft: "15%",
-  width: props.width === "10%" ? props.width : "70%",
+  marginLeft:props.ml==="70%"?"70%":"3%",
+  height:"45px",
+  width: props.width === "10%" ? props.width : "110px",
   textTransform: "lowercase",
   fontSize: 16,
   ":hover": { background: customTheme.palette.custom.dark },
@@ -71,7 +72,7 @@ export const StyledCard = styled(Card)(({}) => ({
   ":hover": { background: customTheme.palette.custom.hover },
 }));
 
- export const StyledItem = styled(Paper)(({ theme }) => ({
+export const StyledItem = styled(Paper)(({ theme }) => ({
   backgroundColor: theme.palette.mode === "dark" ? "#1A2027" : "#fff",
   ...theme.typography.body2,
   padding: theme.spacing(1),

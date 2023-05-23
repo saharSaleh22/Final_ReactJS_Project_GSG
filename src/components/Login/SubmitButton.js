@@ -1,12 +1,12 @@
 import React from "react";
 function Submit(props) {
-  console.log(props.class);
   return (
-    <input
+    <button
       type={props.type}
       value={props.value}
       className={props.class}
-    ></input>
+      onClick={props.onClick}
+    >{props.value}</button>
   );
 }
 export default Submit;

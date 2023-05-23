@@ -1,8 +1,5 @@
-import React from "react";
-import Data from "../ProductsHomePage/data.js";
-import customTheme from "../../theme";
+import React, { useEffect, useState } from "react";
 import "react-multi-carousel/lib/styles.css";
-import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
@@ -11,6 +8,15 @@ import { Box, Stack } from "@mui/material";
 import { ButtonForProduct, StyledCard } from "../../StyledComponents.js";
 
 const BlogsSection = (props) => {
+  const [products, setProducts] = useState([]);
+  useEffect(() => {
+    getProducts();
+  }, []);
+  const getProducts = async () => {
+    let result = await fetch("http://localhost:3006/products");
+    result = await result.json();
+    setProducts(result);
+  };
   return (
     <Box className="paddings innerWidth" sx={{ pb: 9 }}>
       <Stack direction={"row"} sx={{ justifyContent: "space-between", mb: 5 }}>
@@ -23,10 +29,8 @@ const BlogsSection = (props) => {
       </Stack>
 
       <MyCarousel items={3}>
-        {Data.map((card, i) => (
-          <StyledCard
-            
-          >
+        {products.map((card, i) => (
+          <StyledCard>
             <CardMedia
               sx={{ maxWidth: 360, borderRadius: 4, m: 1 }}
               component="img"

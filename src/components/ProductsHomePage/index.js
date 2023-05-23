@@ -1,5 +1,4 @@
-import React from "react";
-import Data from "./data.js";
+import React, { useEffect, useState } from "react";
 import styles from "./style.module.css";
 import customTheme from "../../theme";
 import "react-multi-carousel/lib/styles.css";
@@ -14,20 +13,33 @@ import { ButtonForProduct } from "../../StyledComponents.js";
 import { Stack } from "@mui/material";
 
 const ProductsHome = (props) => {
+  const [products, setProducts] = useState([]);
+  useEffect(() => {
+    getProducts();
+  }, []);
+  const getProducts = async () => {
+    let result = await fetch("http://localhost:3006/products");
+    result = await result.json();
+    setProducts(result);
+  };
   return (
     <section>
       <div className="paddings innerWidth">
         <div className={styles.rHead}>
-        <Stack direction={"row"}  sx={{justifyContent:"space-between",mb:3}}>
-        <Typography variant="h5" gutterBottom>
-        Products
-      </Typography>
-      <ButtonForProduct size="small" width={"10%"} >view all Products</ButtonForProduct>
-   
-      </Stack>
+          <Stack
+            direction={"row"}
+            sx={{ justifyContent: "space-between", mb: 3 }}
+          >
+            <Typography variant="h5" gutterBottom>
+              Products
+            </Typography>
+            <ButtonForProduct size="small" width={"10%"}>
+              view all Products
+            </ButtonForProduct>
+          </Stack>
         </div>
         <MyCarousel items={4}>
-          {Data.map((card, i) => (
+          {products.map((card, i) => (
             <Card
               sx={{
                 maxWidth: 280,
@@ -56,7 +68,7 @@ const ProductsHome = (props) => {
                 </Typography>
               </CardContent>
               <CardActions>
-                <ProductButton value={"shop now!"} />
+                <ProductButton productId={card._id} value={"shop now!"} ml={"70%"} />
               </CardActions>
             </Card>
           ))}
