@@ -20,7 +20,7 @@ const HeroLeft = () => {
 
       <SmallText text="Transform your home with our exquisite furniture collections" />
       <SmallText text=" to bring both style and comfort to your living spaces. " />
-      <Button text={"Order"} class={"hero-button"} />
+      <Button text={"Order"} class={"hero-button"} m={"hero"} />
 
       <Button text={"buy"} class={"hero-button"} />
     </Box>

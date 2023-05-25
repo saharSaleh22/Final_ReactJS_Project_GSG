@@ -12,20 +12,21 @@ import Input from "./Input";
 import Title from "../Texts/Title";
 import Submit from "./SubmitButton";
 const AuthForm = (props) => {
-  const[name,setName]=useState("");
-  const[email,setEmail]=useState("");
-  const[password,setPassword]=useState("");
-  function logIn(){
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  function logIn() {
     console.log("inside login ");
   }
- async function  signUp  (){
-    let result= await fetch("http://localhost:3006/signup",{
-      method:'post',
-      body:JSON.stringify({name,email,password}),
-      headers:{
-        'Content-Type':'application/json'}
+  async function signUp() {
+    let result = await fetch("http://localhost:3006/signup", {
+      method: "post",
+      body: JSON.stringify({ name, email, password }),
+      headers: {
+        "Content-Type": "application/json",
+      },
     });
-    result= await result.JSON();
+    result = await result.JSON();
     console.log("inside signup ");
   }
   return (
@@ -35,25 +36,38 @@ const AuthForm = (props) => {
       onSubmit={(e) => {
         e.preventDefault(); // Prevent form submission from refreshing the page
         // Call your submit logic here
-        if (props.type === "signin") {
-          logIn();
-        } else {
-          signUp();
-        }
+        props.type === "signin" ? logIn() : signUp();
       }}
     >
       <Typography variant="h4">MODERNO</Typography>
       <Title type={props.type} class={"title"} />
 
-      <Input type="text" value={name} placeholder="Username" icon={faUser} onChange={(e)=>setName(e.target.value)} />
+      <Input
+        type="text"
+        value={name}
+        placeholder="Username"
+        icon={faUser}
+        onChange={(e) => setName(e.target.value)}
+      />
       {props.type === "signup" ? (
-        <Input type="text" value={email} placeholder="Email" icon={faEnvelope} onChange={(e)=>setEmail(e.target.value)} />
+        <Input
+          type="text"
+          value={email}
+          placeholder="Email"
+          icon={faEnvelope}
+          onChange={(e) => setEmail(e.target.value)}
+        />
       ) : (
         <></>
       )}
-      <Input type="password" value={password}  placeholder="Password" icon={faLock} onChange={(e)=>setPassword(e.target.value)}/>
+      <Input
+        type="password"
+        value={password}
+        placeholder="Password"
+        icon={faLock}
+        onChange={(e) => setPassword(e.target.value)}
+      />
       <Submit
-   
         type="submit"
         value={props.type === "signin" ? "login" : "sign up"}
         class="btn solid"

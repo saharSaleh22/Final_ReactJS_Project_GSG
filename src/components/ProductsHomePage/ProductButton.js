@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 
 function ProductButton(props) {
   return (
-    <Link to={`/HomePage/${props.productId}`}>
+    <Link to={`/allProducts/${props.productId}`}>
       <ButtonForProduct ml={props.ml}>
         {props.value}
       </ButtonForProduct>

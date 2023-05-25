@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import styles from "./styles.module.css";
 import "swiper/css";
@@ -6,18 +6,10 @@ import "swiper/css/pagination";
 import "swiper/css/navigation";
 import { EffectCoverflow, Pagination, Navigation } from "swiper";
 import { Box, Typography } from "@mui/material";
+import Data from "./data";
 import SliderController from "./SliderController";
 
 function ImageSlider() {
-  const [products, setProducts] = useState([]);
-  useEffect(() => {
-    getProducts();
-  }, []);
-  const getProducts = async () => {
-    let result = await fetch("http://localhost:3006/products");
-    result = await result.json();
-    setProducts(result);
-  };
   return (
     <Box className={styles.container1}>
       <Typography variant="h5" gutterBottom>
@@ -44,7 +36,7 @@ function ImageSlider() {
         modules={[EffectCoverflow, Pagination, Navigation]}
         className={styles.swiperContainer}
       >
-        {products.map((slide, i) => (
+        {Data.map((slide, i) => (
           <SwiperSlide className={styles.swiperSlide}>
             <img src={slide.image} alt="slide_image" />
           </SwiperSlide>

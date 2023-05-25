@@ -51,6 +51,7 @@ function SingleProduct() {
           <Details product={product} width={width} />
         </Stack>
       </Box>
+  
     </>
   );
 }
