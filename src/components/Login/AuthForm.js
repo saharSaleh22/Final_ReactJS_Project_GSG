@@ -1,10 +1,11 @@
 import React, { useState } from "react";
 import { Alert, Stack, Typography } from "@mui/material";
 import { auth } from "./../../firebase";
-
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { createUserWithEmailAndPassword } from "firebase/auth";
-
+import Input from "./Input";
+import Title from "../Texts/Title";
+import Submit from "./SubmitButton";
 import { faUser, faLock, faEnvelope } from "@fortawesome/free-solid-svg-icons";
 import {
   faFacebook,
@@ -12,13 +13,10 @@ import {
   faInstagram,
 } from "@fortawesome/free-brands-svg-icons";
 import SocialIcons from "./SocialIcons/SocialIcons";
-import Input from "./Input";
-import Title from "../Texts/Title";
-import Submit from "./SubmitButton";
+
 import { useNavigate } from "react-router-dom";
 
 const AuthForm = (props) => {
-
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
