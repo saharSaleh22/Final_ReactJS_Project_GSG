@@ -33,7 +33,7 @@ const SingleCard = (props) => {
           {props.card.title.substring(0, 20)}
         </Typography>
         <Typography variant="body2" color="text.secondary">
-          {props.card.description}
+          {props.card.description.substring(0, 90)}...
         </Typography>
       </CardContent>
       <CardActions>

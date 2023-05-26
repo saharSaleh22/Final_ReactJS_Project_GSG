@@ -64,7 +64,7 @@ export const MyDivider = styled(Divider)(({ theme }) => ({
   backgroundColor: customTheme.palette.custom.light,
 }));
 
-export const StyledCard = styled(Card)(({}) => ({
+export const StyledCard = styled(Card)(({ theme }) => ({
   maxWidth: 380,
   borderRadius: 4,
   background: customTheme.palette.secondary.light,
