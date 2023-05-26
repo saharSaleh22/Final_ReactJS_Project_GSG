@@ -1,14 +1,23 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Header from "../Header";
 import Box from "@mui/material/Box";
-import Paper from "@mui/material/Paper";
-import { styled } from "@mui/material/styles";
-import slide_image_4 from "../../assets/p5.jpg";
 import Details from "./Details";
 import { Stack, useMediaQuery, useTheme } from "@mui/material";
 import { StyledItem } from "../../StyledComponents";
+import { useParams } from "react-router-dom";
 function SingleProduct() {
   const theme = useTheme();
+  const { id } = useParams();
+  const [product, setProduct] = useState([]);
+  useEffect(() => {
+    getProducts();
+  });
+  const getProducts = async () => {
+    let result = await fetch(`http://localhost:3006/products/${id}`);
+    result = await result.json();
+
+    setProduct(result);
+  };
   theme.breakpoints.customTablet = "@media (min-width: 900px)"; // Adjust the breakpoint value according to your needs
 
   const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
@@ -32,16 +41,17 @@ function SingleProduct() {
         <Stack sx={{ width: "100%" }} spacing={0} direction={flexDirection}>
           <StyledItem sx={{ width: width }}>
             <img
-              src={slide_image_4}
+              src={product.image}
               width="100%"
               height={isMobile ? "" : "500px"}
               style={{ objectFit: "cover" }}
               alt=""
             />
           </StyledItem>
-          <Details width={width} />
+          <Details product={product} width={width} />
         </Stack>
       </Box>
+  
     </>
   );
 }
