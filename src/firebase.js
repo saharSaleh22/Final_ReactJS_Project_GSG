@@ -1,19 +1,13 @@
-// Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
+
 import { getAuth } from "firebase/auth";
-// TODO: Add SDKs for Firebase products that you want to use
-// https://firebase.google.com/docs/web/setup#available-libraries
-
-// Your web app's Firebase configuration
 const firebaseConfig = {
-  apiKey: "AIzaSyCjuMc1TFN934t8mu72CW0KuerjfYi-KUM",
-  authDomain: "moderno2-32ba2.firebaseapp.com",
-  projectId: "moderno2-32ba2",
-  storageBucket: "moderno2-32ba2.appspot.com",
-  messagingSenderId: "253784196132",
-  appId: "1:253784196132:web:d17e6ae5aea9ec52a1c4b1",
+  apiKey: "AIzaSyDHLK1PHT0835OfC4Hz_Somg8U0bcYLEgY",
+  authDomain: "moderno-auth-48c9b.firebaseapp.com",
+  projectId: "moderno-auth-48c9b",
+  storageBucket: "moderno-auth-48c9b.appspot.com",
+  messagingSenderId: "767725534473",
+  appId: "1:767725534473:web:991d7b7ee778eaf725e7d8",
 };
-
-// Initialize Firebase
 const app = initializeApp(firebaseConfig);
-const auth =getAuth(app);
+export const auth = getAuth(app);
