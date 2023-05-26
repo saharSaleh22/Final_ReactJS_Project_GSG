@@ -18,11 +18,10 @@ import Submit from "./SubmitButton";
 import { useNavigate } from "react-router-dom";
 
 const AuthForm = (props) => {
-
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [error, setError] = useState("");
+  const [statusMessage, setStatusMessage] = useState("");
   const [flag, setFlag] = useState(false);
   const navigate = useNavigate();
 
@@ -33,7 +32,7 @@ const AuthForm = (props) => {
       })
       .catch((error) => {
         setFlag(false);
-        setError("Failed to log in");
+        setStatusMessage("Failed to log in");
       });
   }
   async function signUp() {
@@ -48,11 +47,11 @@ const AuthForm = (props) => {
     createUserWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
         setFlag(true);
-        setError("sign Up successfully");
+        setStatusMessage("sign Up successfully");
       })
       .catch((error) => {
         setFlag(false);
-        setError("Failed to sign up");
+        setStatusMessage("Failed to sign up");
       });
   }
   return (
@@ -60,7 +59,7 @@ const AuthForm = (props) => {
       action=""
       className={props.type === "signin" ? "sign-in-form" : "sign-up-form"}
       onSubmit={(e) => {
-        setError("");
+        setStatusMessage("");
         e.preventDefault();
         props.type === "signin" ? logIn() : signUp();
       }}
@@ -97,7 +96,9 @@ const AuthForm = (props) => {
         value={props.type === "signin" ? "login" : "sign up"}
         class="btn solid"
       />
-      {error && <Alert severity={flag ? "success" : "error"}>{error}</Alert>}
+      {statusMessage && (
+        <Alert severity={flag ? "success" : "error"}>{statusMessage}</Alert>
+      )}
       <Typography variant="subtitle1" gutterBottom>
         or Sign in with social platforms
       </Typography>
