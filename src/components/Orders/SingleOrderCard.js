@@ -6,16 +6,13 @@ import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
 import DeleteIcon from "@mui/icons-material/Delete";
+import { MyCard } from "../../StyledComponents";
 const SingleOrderCard = (props) => {
   return (
-    <Card
+    <MyCard
       sx={{
-        display: "flex",
         flexDirection: { xs: "column", sm: "row" }, // Set direction to column for xs (mobile) and row for sm (tablet) and larger screens
         maxWidth: { xs: 370, sm: 650 },
-        borderRadius: 4,
-        background: customTheme.palette.secondary.light,
-        ":hover": { background: "#efe3dd" },
       }}
     >
       <CardMedia
@@ -50,7 +47,7 @@ const SingleOrderCard = (props) => {
       <CardContent>
         <DeleteIcon sx={{ mt: { xs: 2, sm: 9 }, ml: { xs: 18, sm: 4 } }} />
       </CardContent>
-    </Card>
+    </MyCard>
   );
 };
 

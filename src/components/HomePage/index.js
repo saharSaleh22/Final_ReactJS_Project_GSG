@@ -18,7 +18,7 @@ function HomePage() {
       <Contacts />
       <ImageSlider />
       <BlogsSection />
-      <Footer/>
+      <Footer />
     </>
   );
 }
