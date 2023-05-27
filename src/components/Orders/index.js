@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
 import Header from "../Header";
-import Box from "@mui/material/Box";
 import SingleOrderCard from "./SingleOrderCard";
 import { Stack } from "@mui/material";
 import Button from "../Login/Button";
 import MyDialog from "./DialogForm";
+import Footer from "../Footer";
 
 function Orders() {
   const [products, setProducts] = useState([]);
@@ -32,7 +32,7 @@ function Orders() {
         spacing={4}
         sx={{
           width: "100%",
-          px: { xs: 5, sm: 10, md: 20, lg: 40, xl: 50 }, // px value for mobile and tablet breakpoints
+          px: { xs: 5, sm: 10, md: 20, lg: 40, xl: 50 }, 
           py: 12,
         }}
       >
@@ -48,6 +48,8 @@ function Orders() {
         </Stack>{" "}
       </Stack>
       <MyDialog open={open} setOpen={setOpen} />
+      <Footer/>
+
     </>
   );
 }

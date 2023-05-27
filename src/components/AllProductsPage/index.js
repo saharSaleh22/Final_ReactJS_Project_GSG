@@ -5,6 +5,7 @@ import Button from "../Login/Button";
 import SingleCard from "../ProductsHomePage/SingleCard";
 import Grid from "@mui/material/Grid";
 import Box from "@mui/material/Box";
+import Footer from "../Footer";
 function AllProductsPage() {
   const [products, setProducts] = useState([]);
   useEffect(() => {
@@ -60,6 +61,7 @@ function AllProductsPage() {
           ))}
         </Grid>
       </Box>
+      <Footer/>
 
     
     </>

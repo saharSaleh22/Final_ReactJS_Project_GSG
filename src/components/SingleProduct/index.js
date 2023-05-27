@@ -5,6 +5,7 @@ import Details from "./Details";
 import { Stack, useMediaQuery, useTheme } from "@mui/material";
 import { StyledItem } from "../../StyledComponents";
 import { useParams } from "react-router-dom";
+import Footer from "../Footer";
 function SingleProduct() {
   const theme = useTheme();
   const { id } = useParams();
@@ -51,7 +52,8 @@ function SingleProduct() {
           <Details product={product} width={width} />
         </Stack>
       </Box>
-  
+      <Footer/>
+
     </>
   );
 }
