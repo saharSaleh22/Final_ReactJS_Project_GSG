@@ -44,7 +44,7 @@ const ProductsHome = (props) => {
         </div>
         <MyCarousel items={4}>
           {randomProducts.map((card, i) => (
-            <SingleCard card={card} />
+            <SingleCard card={card} key={i}/>
           ))}
         </MyCarousel>
       </div>

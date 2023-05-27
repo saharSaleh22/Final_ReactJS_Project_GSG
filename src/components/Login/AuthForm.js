@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { Alert, Stack, Typography } from "@mui/material";
 import { auth } from "./../../firebase";
 
@@ -16,16 +16,18 @@ import Input from "./Input";
 import Title from "../Texts/Title";
 import Submit from "./SubmitButton";
 import { useNavigate } from "react-router-dom";
+import { EmailContext } from "../../EmailContext";
 
 const AuthForm = (props) => {
   const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
+  const {email, setEmail} = useContext(EmailContext);
   const [password, setPassword] = useState("");
   const [statusMessage, setStatusMessage] = useState("");
   const [flag, setFlag] = useState(false);
   const navigate = useNavigate();
-
+  
   function logIn() {
+    setEmail(email);
     signInWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
         navigate("/HomePage");

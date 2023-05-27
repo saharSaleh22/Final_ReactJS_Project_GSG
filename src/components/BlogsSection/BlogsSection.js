@@ -30,7 +30,7 @@ const BlogsSection = (props) => {
 
       <MyCarousel items={3}>
         {products.map((card, i) => (
-          <StyledCard>
+          <StyledCard key={i}>
             <CardMedia
               sx={{ maxWidth: 360, borderRadius: 4, m: 1 }}
               component="img"
@@ -40,7 +40,7 @@ const BlogsSection = (props) => {
             />
             <CardContent>
               <Typography variant="body2" color="text.secondary">
-                {card.description}
+                {card.description.substring(0, 90)}...
               </Typography>
             </CardContent>
           </StyledCard>

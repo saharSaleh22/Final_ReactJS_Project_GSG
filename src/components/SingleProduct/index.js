@@ -26,7 +26,7 @@ function SingleProduct() {
 
   const flexDirection = isMobile ? "column" : isTablet ? "row" : "column";
   const width = isMobile ? "100%" : isTablet ? "50%" : "90%";
-  console.log(width);
+
 
   return (
     <>
@@ -52,8 +52,7 @@ function SingleProduct() {
           <Details product={product} width={width} />
         </Stack>
       </Box>
-      <Footer/>
-
+      <Footer />
     </>
   );
 }
