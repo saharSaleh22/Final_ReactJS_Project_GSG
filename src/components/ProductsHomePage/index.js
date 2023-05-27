@@ -18,6 +18,12 @@ const ProductsHome = (props) => {
     result = await result.json();
     setProducts(result);
   };
+  const getRandomItems = (array, count) => {
+    const shuffled = array.sort(() => 0.5 - Math.random());
+    return shuffled.slice(0, count);
+  };
+
+  const randomProducts = getRandomItems(products, 10);
   return (
     <section>
       <div className="paddings innerWidth">
@@ -37,7 +43,7 @@ const ProductsHome = (props) => {
           </Stack>
         </div>
         <MyCarousel items={4}>
-          {products.map((card, i) => (
+          {randomProducts.map((card, i) => (
             <SingleCard card={card} />
           ))}
         </MyCarousel>

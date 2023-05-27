@@ -8,19 +8,25 @@ import Box from "@mui/material/Box";
 import Footer from "../Footer";
 function AllProductsPage() {
   const [products, setProducts] = useState([]);
-  useEffect(() => {
-    getProducts();
-  }, []);
-
   const [selectedButton, setSelectedButton] = useState("All");
+
+  useEffect(() => {
+    getProducts(selectedButton);
+  }, [selectedButton]);
 
   const handleButtonClick = (buttonText) => {
     setSelectedButton(buttonText);
   };
-  const getProducts = async () => {
+
+  const getProducts = async (buttonText) => {
     let result = await fetch("http://localhost:3006/products");
     result = await result.json();
-    setProducts(result);
+    if (buttonText === "All") {
+      setProducts(result);
+    } else {
+      const filteredProducts = result.filter((product) => product.type === buttonText);
+      setProducts(filteredProducts);
+    }
   };
   return (
     <>
@@ -32,14 +38,14 @@ function AllProductsPage() {
           onClick={() => handleButtonClick("All")}
         />
         <Button
-          text={"one Peice"}
-          class={selectedButton === "one Peice" ? "selected" : "hero-button"}
-          onClick={() => handleButtonClick("one Peice")}
+          text={"bedroom"}
+          class={selectedButton === "bedroom" ? "selected" : "hero-button"}
+          onClick={() => handleButtonClick("bedroom")}
         />
         <Button
-          text={"Kitchen"}
-          class={selectedButton === "Kitchen" ? "selected" : "hero-button"}
-          onClick={() => handleButtonClick("Kitchen")}
+          text={"kitchen"}
+          class={selectedButton === "kitchen" ? "selected" : "hero-button"}
+          onClick={() => handleButtonClick("kitchen")}
         />
         <Button
           text={"salon"}
@@ -61,9 +67,7 @@ function AllProductsPage() {
           ))}
         </Grid>
       </Box>
-      <Footer/>
-
-    
+      <Footer />
     </>
   );
 }
