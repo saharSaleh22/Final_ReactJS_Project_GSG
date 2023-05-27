@@ -7,7 +7,7 @@ import AddCircleIcon from "@mui/icons-material/AddCircle";
 import RemoveCircleIcon from "@mui/icons-material/RemoveCircle";
 import { useState } from "react";
 function Details(props) {
-  const [quantity, setQuantity] = useState(0);
+  const [quantity, setQuantity] = useState(1);
   const handleIncrease = () => {
     setQuantity((prevQuantity) => prevQuantity + 1);
   };
