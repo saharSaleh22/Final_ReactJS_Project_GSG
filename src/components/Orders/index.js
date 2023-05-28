@@ -18,7 +18,6 @@ function Orders() {
   };
 
   useEffect(() => {
-    getOrders();
     getUsers();
   }, []);
   const getUsers = async () => {
@@ -38,7 +37,9 @@ function Orders() {
     setOrders(filteredOrders);
     console.log(filteredOrders);
   };
-
+  useEffect(() => {
+    getOrders();
+}, [getOrders]);
   return (
     <>
       <Header Inpage={"pages"} />

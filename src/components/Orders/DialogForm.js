@@ -7,8 +7,7 @@ import IconButton from "@mui/material/IconButton";
 import CloseIcon from "@mui/icons-material/Close";
 import { Box, Stack, Typography } from "@mui/material";
 import Input from "../Login/Input";
-import { faUser } from "@fortawesome/free-solid-svg-icons";
-import LocationOnIcon from "@mui/icons-material/LocationOn";
+import { faLocationPin, faUser } from "@fortawesome/free-solid-svg-icons";
 function MyDialog(props) {
   const handleClose = () => {
     props.setOpen(false);
@@ -66,7 +65,7 @@ function MyDialog(props) {
           <Input
             type="text"
             placeholder="street & city"
-            icon={LocationOnIcon}
+            icon={faLocationPin}
             onChange={(e) => e.target.value}
           />
         </Stack>

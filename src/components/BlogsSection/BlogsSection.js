@@ -6,26 +6,30 @@ import Typography from "@mui/material/Typography";
 import MyCarousel from "../Carousel/Carousel.js";
 import { Box, Stack } from "@mui/material";
 import { ButtonForProduct, StyledCard } from "../../StyledComponents.js";
+import { Link } from "react-router-dom";
 
 const BlogsSection = (props) => {
   const [products, setProducts] = useState([]);
-  useEffect(() => {
-    getProducts();
-  }, []);
+
   const getProducts = async () => {
-    let result = await fetch("http://localhost:3006/products");
+    let result = await fetch("http://localhost:3006/userproducts");
     result = await result.json();
     setProducts(result);
   };
+  useEffect(() => {
+    getProducts();
+  }, [getProducts]);
   return (
     <Box className="paddings innerWidth" sx={{ pb: 9 }}>
       <Stack direction={"row"} sx={{ justifyContent: "space-between", mb: 5 }}>
         <Typography variant="h5" gutterBottom>
           Recent Blogs
         </Typography>
-        <ButtonForProduct size="small" width={"10%"}>
-          view all Blogs
-        </ButtonForProduct>
+        <Link to="/allUserProducts">
+          <ButtonForProduct size="small" width={"10%"}>
+            view all Blogs
+          </ButtonForProduct>
+        </Link>
       </Stack>
 
       <MyCarousel items={3}>

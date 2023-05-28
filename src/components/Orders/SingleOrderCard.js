@@ -13,6 +13,8 @@ const SingleOrderCard = (props) => {
       });
 
       if (response.ok) {
+              // window.location.reload();
+
         console.log("Order deleted successfully");
       } else {
         console.log("Failed to delete order");

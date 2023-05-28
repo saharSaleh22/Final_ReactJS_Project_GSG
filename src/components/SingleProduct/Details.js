@@ -12,10 +12,9 @@ import DialogMessage from "./DialogMessage";
 function Details(props) {
   const [quantity, setQuantity] = useState(1);
   const [open, setOpen] = useState(false);
-  const { email ,setEmail} = useContext(EmailContext);
+  const { email } = useContext(EmailContext);
   const [username, setUsername] = useState("");
   useEffect(() => {
-    setEmail(email)
     getUsers();
 
   }, []);
@@ -26,7 +25,7 @@ function Details(props) {
     result = await result.json();
     const user = result.find((user) => user.email === email);
 
-    user ? setUsername(user.email) : setUsername("Dear Customer");
+    user ? setUsername(user.name) : setUsername("Dear Customer");
     console.log(username);
   };
   const handleIncrease = () => {

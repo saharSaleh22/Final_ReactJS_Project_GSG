@@ -7,24 +7,22 @@ import Layout from "./Layout";
 import HomePage from "./components/HomePage";
 import AllProductsPage from "./components/AllProductsPage";
 import Orders from "./components/Orders";
-import { EmailContext } from "./EmailContext.js";
+import UserProducts from "./components/BlogsSection/UserProducts";
 const Router = () => {
-  const [email, setEmail] = useState("sahar1@gmail.com");
   return (
-    <EmailContext.Provider value={{ email, setEmail }}>
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Layout />}>
             <Route index element={<Login />} />
             <Route path="/HomePage" element={<HomePage />} />
             <Route path="/allProducts" element={<AllProductsPage />} />
+            <Route path="/alluserProducts" element={<UserProducts />} />
             <Route path="/singleProduct" element={<SingleProduct />} />
             <Route path="/orders" element={<Orders />} />
             <Route path="/allProducts/:id" element={<SingleProduct />} />
           </Route>
         </Routes>
       </BrowserRouter>
-    </EmailContext.Provider>
   );
 };
 
