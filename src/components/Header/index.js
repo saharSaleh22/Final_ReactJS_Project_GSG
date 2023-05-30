@@ -26,7 +26,7 @@ function Header(props) {
         </label>
         <Box className={`flexCenter ${styles.hmenu}`}>
           {Data.map((menu, i) => (
-            <MenuItem href={menu.href} key={i} item={menu.item} />
+            <MenuItem href={menu.href} key={i} item={menu.item} email={props.email}/>
           ))}
         </Box>
       </Box>

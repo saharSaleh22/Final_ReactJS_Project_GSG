@@ -6,7 +6,7 @@ import { useState } from "react";
 import { EmailContext } from "./EmailContext";
 
 function App() {
-  const [email, setEmail] = useState("sahar1@gmail.com");
+  const [email, setEmail] = useState('');
   return (
     <EmailContext.Provider value={{ email, setEmail }}>
     <ThemeProvider theme={customTheme}>

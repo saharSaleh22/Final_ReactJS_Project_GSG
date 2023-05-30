@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useCallback, useContext, useEffect, useState } from "react";
 import Header from "../Header";
 import SingleOrderCard from "./SingleOrderCard";
 import { Stack } from "@mui/material";
@@ -13,33 +13,33 @@ function Orders() {
   const { email } = useContext(EmailContext);
   const [username, setUsername] = useState("");
 
-  const handleClickOpen = () => {
+  const handleClickOpen = useCallback(() => {
     setOpen(true);
-  };
+  }, []);
 
   useEffect(() => {
+    const getUsers = async () => {
+      let result = await fetch("http://localhost:3006/users");
+      result = await result.json();
+      const user = result.find((user) => user.email === email);
+
+      user ? setUsername(user.name) : setUsername("Dear Customer");
+    };
+
     getUsers();
-  }, []);
-  const getUsers = async () => {
-    let result = await fetch("http://localhost:3006/users");
-    result = await result.json();
-    const user = result.find((user) => user.email === email);
+  }, [email]);
 
-    user ? setUsername(user.name) : setUsername("Dear Customer");
-    console.log(username);
-  };
-
-  const getOrders = async () => {
+  const getOrders = useCallback(async () => {
     let result = await fetch("http://localhost:3006/orders");
     result = await result.json();
-    console.log("email"+email);
     const filteredOrders = result.filter((order) => order.email === email);
     setOrders(filteredOrders);
-    console.log(filteredOrders);
-  };
+  }, [email,orders]);
+
   useEffect(() => {
     getOrders();
-}, [getOrders]);
+  }, [getOrders]);
+
   return (
     <>
       <Header Inpage={"pages"} />

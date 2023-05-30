@@ -9,7 +9,6 @@ import Footer from "../Footer";
 function AllProductsPage() {
   const [products, setProducts] = useState([]);
   const [selectedButton, setSelectedButton] = useState("All");
-
   useEffect(() => {
     getProducts(selectedButton);
   }, [selectedButton]);

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import Header from "../Header";
 import Hero from "../hero";
 import ProductsHome from "../ProductsHomePage";
@@ -7,8 +7,11 @@ import Contacts from "../Contacts";
 import ImageSlider from "../ImagesSlider/ImageSlider";
 import BlogsSection from "../BlogsSection/BlogsSection";
 import Footer from "../Footer";
+import { EmailContext } from "../../EmailContext";
 
 function HomePage() {
+  const {email} = useContext(EmailContext);
+
   return (
     <>
       <Header />

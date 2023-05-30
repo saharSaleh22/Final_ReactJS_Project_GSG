@@ -25,11 +25,12 @@ const AuthForm = (props) => {
   const [statusMessage, setStatusMessage] = useState("");
   const [flag, setFlag] = useState(false);
   const navigate = useNavigate();
-  
+
   function logIn() {
-    setEmail(email);
     signInWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
+        const loggedInEmail = userCredential.user.email;
+        setEmail(loggedInEmail);
         navigate("/HomePage");
       })
       .catch((error) => {
@@ -40,7 +41,7 @@ const AuthForm = (props) => {
   async function signUp() {
     let result = await fetch("http://localhost:3006/signup", {
       method: "post",
-      body: JSON.stringify({ name, email, password }),
+      body: JSON.stringify({ name, email, password ,address:"",number:""}),
       headers: {
         "Content-Type": "application/json",
       },
@@ -50,11 +51,15 @@ const AuthForm = (props) => {
       .then((userCredential) => {
         setFlag(true);
         setStatusMessage("sign Up successfully");
+          setEmail("");
+      setName("");
+      setPassword("");
       })
       .catch((error) => {
         setFlag(false);
         setStatusMessage("Failed to sign up");
       });
+    
   }
   return (
     <form

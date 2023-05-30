@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext, useState } from "react";
 import Button from "../Login/Button";
 import Dialog from "@mui/material/Dialog";
 import DialogTitle from "@mui/material/DialogTitle";
@@ -8,7 +8,31 @@ import CloseIcon from "@mui/icons-material/Close";
 import { Box, Stack, Typography } from "@mui/material";
 import Input from "../Login/Input";
 import { faLocationPin, faUser } from "@fortawesome/free-solid-svg-icons";
+import { EmailContext } from "../../EmailContext";
 function MyDialog(props) {
+  const[address,setAddress]=useState("");
+  const[number,setNumber]=useState("");
+
+const {email}=useContext(EmailContext);
+  async function signUp() {
+    const userIdentifier = email; // Replace this with the unique identifier of the user you want to update
+    const updatedUser = {
+      address: address,
+      number: number
+    };
+    console.log(updatedUser);
+  
+    let result = await fetch(`http://localhost:3006/signup/${userIdentifier}`, {
+      method: "put",
+      body: JSON.stringify(updatedUser),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+    result = await result;
+    handleClose()
+  }
+
   const handleClose = () => {
     props.setOpen(false);
   };
@@ -57,7 +81,7 @@ function MyDialog(props) {
             type="text"
             placeholder="Mobile Number"
             icon={faUser}
-            onChange={(e) => e.target.value}
+            onChange={(e) => setNumber(e.target.value)}
           />
           <Typography variant="subtitle2" sx={{ mb: -1 }} gutterBottom>
             address
@@ -66,7 +90,7 @@ function MyDialog(props) {
             type="text"
             placeholder="street & city"
             icon={faLocationPin}
-            onChange={(e) => e.target.value}
+            onChange={(e) => setAddress(e.target.value)}
           />
         </Stack>
         <Typography
@@ -84,7 +108,7 @@ function MyDialog(props) {
           after discount :$7200
         </Typography>
         <Box sx={{ textAlign: "center" }}>
-          <Button text={"Checkout"} class="hero-button" />
+          <Button text={"Done"} class="hero-button" onClick={signUp} />
         </Box>
       </DialogContent>
     </Dialog>

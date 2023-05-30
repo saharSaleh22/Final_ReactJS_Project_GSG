@@ -6,44 +6,41 @@ import { DetailsItem } from "../../StyledComponents";
 
 import AddCircleIcon from "@mui/icons-material/AddCircle";
 import RemoveCircleIcon from "@mui/icons-material/RemoveCircle";
-import { useContext, useEffect, useState } from "react";
+import { useCallback, useContext, useEffect, useState } from "react";
 import { EmailContext } from "../../EmailContext";
 import DialogMessage from "./DialogMessage";
+
 function Details(props) {
   const [quantity, setQuantity] = useState(1);
   const [open, setOpen] = useState(false);
   const { email } = useContext(EmailContext);
   const [username, setUsername] = useState("");
-  useEffect(() => {
-    getUsers();
 
-  }, []);
-  const { description, image, title, price, _id } = props.product;
-
-  const getUsers = async () => {
+  const getUsers = useCallback(async () => {
     let result = await fetch("http://localhost:3006/users");
     result = await result.json();
     const user = result.find((user) => user.email === email);
-
     user ? setUsername(user.name) : setUsername("Dear Customer");
-    console.log(username);
-  };
-  const handleIncrease = () => {
-    quantity === 10
-      ? setQuantity(10)
-      : setQuantity((prevQuantity) => prevQuantity + 1);
-  };
-  async function handleClickOpen() {
+  }, [email]);
+
+  useEffect(() => {
+    getUsers();
+  }, [getUsers]);
+
+  const handleIncrease = useCallback(() => {
+    setQuantity((prevQuantity) => (prevQuantity === 10 ? 10 : prevQuantity + 1));
+  }, []);
+
+  const handleClickOpen = useCallback(async () => {
     let result = await fetch("http://localhost:3006/order", {
       method: "post",
       body: JSON.stringify({
-        description,
-        image,
-        title,
-        price,
+        description: props.product.description,
+        image: props.product.image,
+        title: props.product.title,
+        price: props.product.price,
         quantity,
         email,
-        _id,
       }),
       headers: {
         "Content-Type": "application/json",
@@ -51,15 +48,13 @@ function Details(props) {
     });
     result = await result;
     setOpen(true);
-  }
-  const handleClose = () => {
+  }, [email, props.product]);
+  const handleClose = useCallback(() => {
     setOpen(false);
-  };
-  const handleDecrease = () => {
-    quantity === 1
-      ? setQuantity(1)
-      : setQuantity((prevQuantity) => prevQuantity - 1);
-  };
+  }, []);
+  const handleDecrease = useCallback(() => {
+    setQuantity((prevQuantity) => (prevQuantity === 1 ? 1 : prevQuantity - 1));
+  }, []);
 
   return (
     <DetailsItem sx={{ width: props.width }}>
@@ -108,7 +103,7 @@ function Details(props) {
       </Stack>
       <Box sx={{ textAlign: "center", pt: 4 }}>
         <Button
-          text={"Order"}
+          text={"Add To Cart"}
           class={"hero-button"}
           onClick={handleClickOpen}
         />
@@ -116,5 +111,5 @@ function Details(props) {
       <DialogMessage open={open} onClose={handleClose} username={username} />
     </DetailsItem>
   );
-}export default Details;
-
+}
+export default Details;

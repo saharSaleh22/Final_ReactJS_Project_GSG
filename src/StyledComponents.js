@@ -1,7 +1,8 @@
 import { styled } from "@mui/material/styles";
 import Paper from "@mui/material/Paper";
 import customTheme from "./theme";
-import { Box, Button, Card, Divider, Link, Typography } from "@mui/material";
+import { Link } from "react-router-dom";
+import { Box, Button, Card, Divider,  Typography } from "@mui/material";
 
 export const ContactItem = styled(Paper)(({ theme }) => ({
   padding: theme.spacing(1),

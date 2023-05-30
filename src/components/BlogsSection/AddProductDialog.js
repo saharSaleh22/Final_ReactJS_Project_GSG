@@ -140,7 +140,7 @@ function AddProductDialog(props) {
           }}
         />
 
-        <Box sx={{ textAlign: "center", mt: 5 }}>
+        <Box sx={{ textAlign: "center", mt: 3 }}>
           <Button
             text={"Add Product"}
             class="hero-button"

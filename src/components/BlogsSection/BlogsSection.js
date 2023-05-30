@@ -4,7 +4,7 @@ import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
 import MyCarousel from "../Carousel/Carousel.js";
-import { Box, Stack } from "@mui/material";
+import { Box, Rating, Stack } from "@mui/material";
 import { ButtonForProduct, StyledCard } from "../../StyledComponents.js";
 import { Link } from "react-router-dom";
 
@@ -15,20 +15,19 @@ const BlogsSection = (props) => {
     let result = await fetch("http://localhost:3006/userproducts");
     result = await result.json();
     setProducts(result);
+
   };
   useEffect(() => {
     getProducts();
-  }, [getProducts]);
+  }, []);
   return (
     <Box className="paddings innerWidth" sx={{ pb: 9 }}>
       <Stack direction={"row"} sx={{ justifyContent: "space-between", mb: 5 }}>
         <Typography variant="h5" gutterBottom>
-          Recent Blogs
+          Recent Products added by users
         </Typography>
         <Link to="/allUserProducts">
-          <ButtonForProduct size="small" width={"10%"}>
-            view all Blogs
-          </ButtonForProduct>
+          <ButtonForProduct size="small">view all</ButtonForProduct>
         </Link>
       </Stack>
 
@@ -43,6 +42,11 @@ const BlogsSection = (props) => {
               image={card.image}
             />
             <CardContent>
+              <Typography variant="subtitle1" color="text.secondary">
+                {card.title.substring(0, 90)}
+              </Typography>
+              <Rating name="half-rating" defaultValue={3.5} precision={0.5} />
+
               <Typography variant="body2" color="text.secondary">
                 {card.description.substring(0, 90)}...
               </Typography>
