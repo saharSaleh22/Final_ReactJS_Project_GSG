@@ -47,8 +47,10 @@ export const ButtonForProduct = styled(Button)((props) => ({
   color: customTheme.palette.custom.light,
   padding: "1.4px 2px 1.4px 4px",
   marginBottom: 2,
-  marginLeft: props.ml === "70%" ? "70%" : "3%",
-  height: "45px",
+  marginLeft: props.ml === "70%" ? "0%" : "3%",
+  marginBottom:5,
+  height: "40px",
+  
   width: props.width === "10%" ? props.width : "110px",
   textTransform: "lowercase",
   fontSize: 16,

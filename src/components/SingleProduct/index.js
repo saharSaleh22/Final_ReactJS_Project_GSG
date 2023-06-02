@@ -6,7 +6,7 @@ import { Stack, useMediaQuery, useTheme } from "@mui/material";
 import { StyledItem } from "../../StyledComponents";
 import { useParams } from "react-router-dom";
 import Footer from "../Footer";
-function SingleProduct() {
+function SingleProduct(props) {
   const theme = useTheme();
   const { id } = useParams();
   const [product, setProduct] = useState([]);
@@ -14,9 +14,16 @@ function SingleProduct() {
     getProducts();
   });
   const getProducts = async () => {
-    let result = await fetch(`http://localhost:3006/products/${id}`);
-    result = await result.json();
+    let result = null;
+    if (props.type === "user") {
+      const response = await fetch(`http://localhost:3006/userproducts/${id}`);
+      result = await response.json();
+    }
 
+    if (props.type === "all") {
+      const response = await fetch(`http://localhost:3006/products/${id}`);
+      result = await response.json();
+    }
     setProduct(result);
   };
   theme.breakpoints.customTablet = "@media (min-width: 900px)"; // Adjust the breakpoint value according to your needs
@@ -26,7 +33,6 @@ function SingleProduct() {
 
   const flexDirection = isMobile ? "column" : isTablet ? "row" : "column";
   const width = isMobile ? "100%" : isTablet ? "50%" : "90%";
-
 
   return (
     <>
@@ -49,7 +55,7 @@ function SingleProduct() {
               alt=""
             />
           </StyledItem>
-          <Details product={product} width={width} />
+          <Details product={product} width={width} type={props.type} />
         </Stack>
       </Box>
       <Footer />

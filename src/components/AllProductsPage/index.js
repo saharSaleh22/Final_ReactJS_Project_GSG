@@ -61,7 +61,7 @@ function AllProductsPage() {
         <Grid container spacing={4}>
           {products.map((card, i) => (
             <Grid item key={i} xs={12} sm={6} md={3}>
-              <SingleCard card={card} />
+              <SingleCard card={card} type={"all"}/>
             </Grid>
           ))}
         </Grid>

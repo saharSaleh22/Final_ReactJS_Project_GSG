@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useCallback, useContext, useState } from "react";
 
 import Button from "../Login/Button";
 import Dialog from "@mui/material/Dialog";
@@ -14,6 +14,7 @@ import {
   faUser,
 } from "@fortawesome/free-solid-svg-icons";
 import { faDotCircle } from "@fortawesome/free-solid-svg-icons";
+import { EmailContext } from "../../EmailContext";
 
 function AddProductDialog(props) {
   const [image, setImage] = useState(null);
@@ -21,10 +22,12 @@ function AddProductDialog(props) {
   const [description, setDescription] = useState(null);
   const [price, setPrice] = useState(null);
   const [address, setAddress] = useState(null);
+  const { email } = useContext(EmailContext);
 
   const handleClose = () => {
     props.setOpen(false);
   };
+
   async function AddToUserProducts() {
     let result = await fetch("http://localhost:3006/adduserproduct", {
       method: "post",
@@ -33,8 +36,8 @@ function AddProductDialog(props) {
         title,
         price,
         image,
-        email: "sahar1@gmail.com",
-        mobile: "0568175944",
+        email: email,
+        mobile: "545",
         rating: 3.5,
         address,
       }),
@@ -49,7 +52,7 @@ function AddProductDialog(props) {
     const files = event.target.files;
     if (files && files.length > 0) {
       const file = files[0];
-      setImage(+ URL.createObjectURL(file));
+      setImage(+URL.createObjectURL(file));
       setImage("../../assets/" + file.name);
     }
   }

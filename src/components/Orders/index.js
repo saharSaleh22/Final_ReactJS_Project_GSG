@@ -1,7 +1,7 @@
 import React, { useCallback, useContext, useEffect, useState } from "react";
 import Header from "../Header";
 import SingleOrderCard from "./SingleOrderCard";
-import { Stack } from "@mui/material";
+import { Box, Stack, Typography } from "@mui/material";
 import Button from "../Login/Button";
 import MyDialog from "./DialogForm";
 import Footer from "../Footer";
@@ -34,7 +34,7 @@ function Orders() {
     result = await result.json();
     const filteredOrders = result.filter((order) => order.email === email);
     setOrders(filteredOrders);
-  }, [email,orders]);
+  }, [email, orders]);
 
   useEffect(() => {
     getOrders();
@@ -43,26 +43,41 @@ function Orders() {
   return (
     <>
       <Header Inpage={"pages"} />
-
-      <Stack
-        spacing={4}
-        sx={{
-          width: "100%",
-          px: { xs: 5, sm: 10, md: 20, lg: 40, xl: 50 },
-          py: 12,
-        }}
-      >
-        {orders.map((card, i) => (
-          <SingleOrderCard card={card} key={i} />
-        ))}
-        <Stack sx={{ pl: { xs: 12, sm: 20, md: 30, lg: 30, xl: 30 } }}>
-          <Button
-            text={"Checkout"}
-            class="hero-button"
-            onClick={() => handleClickOpen()}
-          />
-        </Stack>{" "}
-      </Stack>
+      {orders.length === 0 ? (
+        <Box
+          sx={{
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            height: "90vh",
+          }}
+        >
+          <Typography sx={{ textAlign: "center" }} variant="subtitle1">
+            {" "}
+            there are no products added to your Cart
+          </Typography>
+        </Box>
+      ) : (
+        <Stack
+          spacing={4}
+          sx={{
+            width: "100%",
+            px: { xs: 5, sm: 10, md: 20, lg: 40, xl: 50 },
+            py: 12,
+          }}
+        >
+          {orders.map((card, i) => (
+            <SingleOrderCard card={card} key={i} />
+          ))}
+          <Stack sx={{ pl: { xs: 12, sm: 20, md: 30, lg: 30, xl: 30 } }}>
+            <Button
+              text={"Checkout"}
+              class="hero-button"
+              onClick={() => handleClickOpen()}
+            />
+          </Stack>
+        </Stack>
+      )}
       <MyDialog open={open} setOpen={setOpen} />
       <Footer />
     </>

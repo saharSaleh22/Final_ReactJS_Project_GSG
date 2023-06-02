@@ -14,7 +14,6 @@ function UserProducts() {
   const [openAdd, setOpenAdd] = useState(false);
   const [openData, setOpenData] = useState(false);
   const { email } = useContext(EmailContext);
-
   useEffect(() => {
     const getProducts = async () => {
       let result = await fetch("http://localhost:3006/userproducts");
@@ -27,7 +26,9 @@ function UserProducts() {
 
   async function handleButtonClick() {
     const userIdentifier = email;
-    let updatedUserData = await fetch(`http://localhost:3006/signup/${userIdentifier}`);
+    let updatedUserData = await fetch(
+      `http://localhost:3006/signup/${userIdentifier}`
+    );
     updatedUserData = await updatedUserData.json();
     if (updatedUserData.address !== "") {
       setOpenAdd(true);
@@ -44,8 +45,8 @@ function UserProducts() {
       <Header Inpage={"pages"} />
 
       <Box sx={{ width: "100%", px: 10, py: 2 }}>
-        <Stack direction={"row"} spacing={110} sx={{ my: 7, ml: 5 }}>
-          <Typography variant="h6">Products added by users</Typography>
+        <Stack direction={"row"} spacing={103} sx={{ my: 7, ml: 5 }}>
+          <Typography variant="h6">pre-owned items added by users</Typography>
           <Button
             text={"Add yours"}
             class={"hero-button"}

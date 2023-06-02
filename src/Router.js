@@ -8,6 +8,7 @@ import HomePage from "./components/HomePage";
 import AllProductsPage from "./components/AllProductsPage";
 import Orders from "./components/Orders";
 import UserProducts from "./components/BlogsSection/UserProducts";
+import Likes from "./components/FavoritesPage";
 const Router = () => {
   return (
       <BrowserRouter>
@@ -19,7 +20,9 @@ const Router = () => {
             <Route path="/alluserProducts" element={<UserProducts />} />
             <Route path="/singleProduct" element={<SingleProduct />} />
             <Route path="/orders" element={<Orders />} />
-            <Route path="/allProducts/:id" element={<SingleProduct />} />
+            <Route path="/favorites" element={<Likes />} />
+            <Route path="/allProducts/:id" element={<SingleProduct type={"all"}/>} />
+            <Route path="/alluserproducts/:id" element={<SingleProduct type={"user"}/>} />
           </Route>
         </Routes>
       </BrowserRouter>

@@ -1,5 +1,10 @@
 import Box from "@mui/material/Box";
-import { Stack, Typography } from "@mui/material";
+import {
+
+  Rating,
+  Stack,
+  Typography,
+} from "@mui/material";
 import Button from "../Login/Button";
 import CircleIcon from "@mui/icons-material/Circle";
 import { DetailsItem } from "../../StyledComponents";
@@ -10,11 +15,14 @@ import { useCallback, useContext, useEffect, useState } from "react";
 import { EmailContext } from "../../EmailContext";
 import DialogMessage from "./DialogMessage";
 
+import OwnerDetails from "./OwnerDetails";
+
 function Details(props) {
   const [quantity, setQuantity] = useState(1);
   const [open, setOpen] = useState(false);
   const { email } = useContext(EmailContext);
   const [username, setUsername] = useState("");
+
 
   const getUsers = useCallback(async () => {
     let result = await fetch("http://localhost:3006/users");
@@ -28,7 +36,9 @@ function Details(props) {
   }, [getUsers]);
 
   const handleIncrease = useCallback(() => {
-    setQuantity((prevQuantity) => (prevQuantity === 10 ? 10 : prevQuantity + 1));
+    setQuantity((prevQuantity) =>
+      prevQuantity === 10 ? 10 : prevQuantity + 1
+    );
   }, []);
 
   const handleClickOpen = useCallback(async () => {
@@ -55,12 +65,35 @@ function Details(props) {
   const handleDecrease = useCallback(() => {
     setQuantity((prevQuantity) => (prevQuantity === 1 ? 1 : prevQuantity - 1));
   }, []);
+  const [defaultValue, setDefaultValue] = useState(null);
 
+  useEffect(() => {
+    const ratingValue = (Math.random() * (5 - 3.5) + 3.5).toFixed(1);
+    setDefaultValue(ratingValue);
+  }, []);
+
+  if (defaultValue === null) {
+    return <div>Loading...</div>;
+  }
   return (
     <DetailsItem sx={{ width: props.width }}>
       {" "}
-      <Typography variant="h5" sx={{ pb: 2, textAlign: "center" }} gutterBottom>
+      <Typography variant="h5" sx={{ textAlign: "center" }} gutterBottom>
         {props.product.title}
+      </Typography>
+      <Typography
+        variant="subtitle1"
+        sx={{ pb: 1, textAlign: "center" }}
+        gutterBottom
+      >
+        {" "}
+        {defaultValue}
+        <Rating
+          name="half-rating"
+          defaultValue={defaultValue}
+          precision={0.1}
+          sx={{ fontSize: "20px" }}
+        />
       </Typography>
       <hr width="95%" />
       <Typography
@@ -85,6 +118,9 @@ function Details(props) {
         Price : {props.product.price}
       </Typography>
       <hr width="95%" />
+      {props.type === "user" && (
+        <OwnerDetails mobile={props.product.mobile} email={props.product.email} address={props.product.address} />
+      )}
       <Stack
         direction={"row"}
         spacing={4}
