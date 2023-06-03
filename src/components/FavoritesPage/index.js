@@ -8,19 +8,18 @@ import { EmailContext } from "../../EmailContext";
 function Likes() {
   const [products, setProducts] = useState([]);
   const { email } = useContext(EmailContext);
-  useEffect(() => {
-    getProducts();
-  }, []);
-
+ 
   const getProducts = async () => {
     let result = await fetch("http://localhost:3006/likes");
     result = await result.json();
-    console.log("opo" + email);
     const filteredProducts = result.filter(
       (product) => product.email === email
     );
     setProducts(filteredProducts);
-  };
+  }; useEffect(() => {
+    getProducts();
+  }, [getProducts]);
+
   return (
     <>
       <Header Inpage={"pages"} />{" "}
@@ -37,7 +36,7 @@ function Likes() {
         <Grid container spacing={4}>
           { products.map((card, i) => (
               <Grid item key={i} xs={12} sm={6} md={3}>
-                <SingleCard card={card} />
+                <SingleCard card={card} like={"yes"} />
               </Grid>
             ))}
 

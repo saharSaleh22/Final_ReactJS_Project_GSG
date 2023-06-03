@@ -144,7 +144,7 @@ function Details(props) {
           onClick={handleClickOpen}
         />
       </Box>
-      <DialogMessage open={open} onClose={handleClose} username={username} />
+      <DialogMessage open={open} onClose={handleClose} username={username} text={"🎉 Congratulations! Your product has been added to your shopping cart successfully. Proceed to confirm your order now! 🛒"} />
     </DetailsItem>
   );
 }

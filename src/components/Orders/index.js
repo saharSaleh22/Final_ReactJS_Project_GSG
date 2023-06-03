@@ -6,16 +6,33 @@ import Button from "../Login/Button";
 import MyDialog from "./DialogForm";
 import Footer from "../Footer";
 import { EmailContext } from "../../EmailContext";
+import DialogMessage from "../SingleProduct/DialogMessage";
 
 function Orders() {
   const [orders, setOrders] = useState([]);
-  const [open, setOpen] = useState(false);
+  const [openAdd, setOpenAdd] = useState(false);
+  const [openData, setOpenData] = useState(false);
   const { email } = useContext(EmailContext);
   const [username, setUsername] = useState("");
+  const [totalPrice, setTotalPrice] = useState("");
 
-  const handleClickOpen = useCallback(() => {
-    setOpen(true);
-  }, []);
+ async function handleClickOpen() {
+    const userIdentifier = email;
+    let updatedUserData = await fetch(
+      `http://localhost:3006/signup/${userIdentifier}`
+    );
+    updatedUserData = await updatedUserData.json();
+    if (updatedUserData.address !== "") {
+      setOpenAdd(true);
+      setOpenData(false);
+      console.log("addres is not null");
+    } else {
+      setOpenAdd(false);
+      setOpenData(true);
+      console.log("addres is  null");
+    }
+
+  }
 
   useEffect(() => {
     const getUsers = async () => {
@@ -33,6 +50,14 @@ function Orders() {
     let result = await fetch("http://localhost:3006/orders");
     result = await result.json();
     const filteredOrders = result.filter((order) => order.email === email);
+    let totalPrice = 0;
+    filteredOrders.forEach((order) => {
+      const orderTotal = order.price * order.quantity;
+      totalPrice += orderTotal;
+      setTotalPrice(totalPrice);
+
+    });
+
     setOrders(filteredOrders);
   }, [email, orders]);
 
@@ -78,7 +103,8 @@ function Orders() {
           </Stack>
         </Stack>
       )}
-      <MyDialog open={open} setOpen={setOpen} />
+      <DialogMessage open={openAdd} onClose={()=>setOpenAdd(false)}order={"final"} totalPrice={totalPrice}text={"🎉 Thank you for your order! Your order has been successfully received and is now being processed 📦"} username={username}/>
+      <MyDialog open={openData} setOpen={setOpenData} username={username} />
       <Footer />
     </>
   );

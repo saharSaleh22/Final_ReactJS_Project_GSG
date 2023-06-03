@@ -92,14 +92,15 @@ const SingleCard = (props) => {
     result2 = await result2;
     setIsFavorite(false);
   };
-  const handleOrder = useCallback(async () => {
+  const handleOrder = useCallback(async (card) => {
+    // console.log("my id is "+id)
     let result = await fetch("http://localhost:3006/order", {
       method: "post",
       body: JSON.stringify({
-        description: props.card.description,
-        image: props.card.image,
-        title: props.card.title,
-        price: props.card.price,
+        description:card.description,
+        image: card.image,
+        title: card.title,
+        price: card.price,
         quantity: 1,
         email,
       }),
@@ -149,7 +150,7 @@ const SingleCard = (props) => {
           ) : (
             <ShoppingCartIcon
               sx={{ color: "#A75D5D", transition: "ease 0.5s" }}
-              onClick={handleOrder}
+              onClick={() => handleOrder(props.card)}
             />
           )}
           <ProductButton
@@ -158,7 +159,12 @@ const SingleCard = (props) => {
             value={"shop now!"}
             ml={"70%"}
           />
-          {isFavorite ? (
+          {props.like === "yes" ? (
+            <FavoriteIcon
+              sx={{ color: "#A75D5D" }}
+              onClick={() => ReomveFromFav(props.card._id)}
+            />
+          ) : isFavorite ? (
             <FavoriteIcon
               sx={{ color: "#A75D5D" }}
               onClick={() => ReomveFromFav(props.card._id)}

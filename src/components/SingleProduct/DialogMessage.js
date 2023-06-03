@@ -24,10 +24,31 @@ function DialogMessage(props) {
     >
       <DialogTitle>Hey there, {props.username}</DialogTitle>
       <DialogContent>
-        <Typography variant="subtitle1">
-          🎉 Thank you for your order! Your order has been successfully received
-          and is now being processed. 📦
-        </Typography>
+        <Typography variant="subtitle1">{props.text}</Typography>
+        {props.order === "final" && (
+          <>
+            <Typography
+              variant="subtitle2"
+              sx={{ pt: 2, textAlign: "center" }}
+              gutterBottom
+            >
+              total price :${props.totalPrice.toFixed(0)}
+            </Typography>
+            <Typography
+              variant="subtitle2"
+              sx={{ py: 1, textAlign: "center" }}
+              gutterBottom
+            >
+              after discount :$
+              {(props.totalPrice - props.totalPrice * 0.2).toFixed(0)}
+            </Typography>
+          </>
+        )}
+        {props.order === "final" && (
+          <Typography variant="subtitle1" sx={{ textAlign: "center" }}>
+            Note that Cash on Delivery
+          </Typography>
+        )}
       </DialogContent>
       <DialogActions>
         <IconButton onClick={props.onClose} color="inherit">

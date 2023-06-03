@@ -6,8 +6,8 @@ import styles from "./style.module.css";
 import MenuItem from "./MenuItem";
 import Data from "./data";
 import customTheme from "../../theme";
-
 function Header(props) {
+
   return (
     <Box
       className={styles.hwrapper}
@@ -26,7 +26,7 @@ function Header(props) {
         </label>
         <Box className={`flexCenter ${styles.hmenu}`}>
           {Data.map((menu, i) => (
-            <MenuItem href={menu.href} key={i} item={menu.item} email={props.email}/>
+            <MenuItem href={menu.href} key={i} item={menu.item} email={props.email} />
           ))}
         </Box>
       </Box>

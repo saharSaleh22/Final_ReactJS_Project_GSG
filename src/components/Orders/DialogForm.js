@@ -20,7 +20,6 @@ const {email}=useContext(EmailContext);
       address: address,
       number: number
     };
-    console.log(updatedUser);
   
     let result = await fetch(`http://localhost:3006/signup/${userIdentifier}`, {
       method: "put",
@@ -50,7 +49,7 @@ const {email}=useContext(EmailContext);
       }}
     >
       <DialogTitle>
-        Fill in the fields
+      Kindly {props.username}, <br/>complete the required fields first, please.
         <IconButton
           aria-label="close"
           onClick={handleClose}
@@ -93,21 +92,8 @@ const {email}=useContext(EmailContext);
             onChange={(e) => setAddress(e.target.value)}
           />
         </Stack>
-        <Typography
-          variant="subtitle2"
-          sx={{ pt: 2, textAlign: "center" }}
-          gutterBottom
-        >
-          total price :$8000
-        </Typography>
-        <Typography
-          variant="subtitle2"
-          sx={{ py: 1, textAlign: "center" }}
-          gutterBottom
-        >
-          after discount :$7200
-        </Typography>
-        <Box sx={{ textAlign: "center" }}>
+      
+        <Box sx={{ textAlign: "center" ,mt:4 }}>
           <Button text={"Done"} class="hero-button" onClick={signUp} />
         </Box>
       </DialogContent>

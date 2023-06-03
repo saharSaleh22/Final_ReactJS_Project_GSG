@@ -1,6 +1,9 @@
-import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import PersonIcon from "@mui/icons-material/Person";
-import FavoriteIcon from "@mui/icons-material/Favorite";
+import FavIcon from "./Fav";
+import CartIcon from "./orders";
+
+
+
 
 const Data = [
   {
@@ -25,11 +28,12 @@ const Data = [
   },
   {
     href: "/orders",
-    item: <ShoppingCartIcon sx={{ ml: 1 }} />,
-  },
+    item: <CartIcon/>
+  },       
+
   {
     href: "/favorites",
-    item: <FavoriteIcon sx={{ ml: 1 }} />,
+    item: <FavIcon/>
   },
 ];
 
