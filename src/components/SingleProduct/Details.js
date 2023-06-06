@@ -51,6 +51,7 @@ function Details(props) {
         price: props.product.price,
         quantity,
         email,
+        confirm:0,
       }),
       headers: {
         "Content-Type": "application/json",

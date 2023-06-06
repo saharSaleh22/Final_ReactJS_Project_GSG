@@ -20,7 +20,6 @@ const SingleCard = (props) => {
   const { email } = useContext(EmailContext);
 
   async function AddToFav() {
-    console.log("inside add to fave");
     let result = await fetch("http://localhost:3006/likes", {
       method: "post",
       body: JSON.stringify({
@@ -42,7 +41,6 @@ const SingleCard = (props) => {
     const updatedUser = {
       like: 1,
     };
-    console.log(updatedUser);
 
     let result2 = await fetch(
       `http://localhost:3006/products/${userIdentifier}`,
@@ -62,22 +60,11 @@ const SingleCard = (props) => {
       const response = await fetch(`http://localhost:3006/likes/${id}`, {
         method: "DELETE",
       });
-
-      if (response.ok) {
-        // window.location.reload();
-
-        console.log("unlike deleted successfully");
-      } else {
-        console.log("Failed to delete like");
-      }
-    } catch (error) {
-      console.error("An error occurred while deleting the like:", error);
-    }
+    } catch (error) {}
     const userIdentifier = props.card._id; // Replace this with the unique identifier of the user you want to update
     const updatedUser = {
       like: 0,
     };
-    console.log(updatedUser);
 
     let result2 = await fetch(
       `http://localhost:3006/products/${userIdentifier}`,
@@ -92,28 +79,31 @@ const SingleCard = (props) => {
     result2 = await result2;
     setIsFavorite(false);
   };
-  const handleOrder = useCallback(async (card) => {
-    // console.log("my id is "+id)
-    let result = await fetch("http://localhost:3006/order", {
-      method: "post",
-      body: JSON.stringify({
-        description:card.description,
-        image: card.image,
-        title: card.title,
-        price: card.price,
-        quantity: 1,
-        email,
-      }),
-      headers: {
-        "Content-Type": "application/json",
-      },
-    });
-    result = await result;
-    setIsOrderPlaced(true);
-    setTimeout(() => {
-      setIsOrderPlaced(false);
-    }, 1000);
-  }, [email, props.product]);
+  const handleOrder = useCallback(
+    async (card) => {
+      let result = await fetch("http://localhost:3006/order", {
+        method: "post",
+        body: JSON.stringify({
+          description: card.description,
+          image: card.image,
+          title: card.title,
+          price: card.price,
+          quantity: 1,
+          confirm: 0,
+          email,
+        }),
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+      result = await result;
+      setIsOrderPlaced(true);
+      setTimeout(() => {
+        setIsOrderPlaced(false);
+      }, 1000);
+    },
+    [email, props.product]
+  );
   return (
     <Card
       sx={{

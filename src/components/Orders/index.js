@@ -16,22 +16,30 @@ function Orders() {
   const [username, setUsername] = useState("");
   const [totalPrice, setTotalPrice] = useState("");
 
- async function handleClickOpen() {
+  async function handleClickOpen() {
     const userIdentifier = email;
     let updatedUserData = await fetch(
       `http://localhost:3006/signup/${userIdentifier}`
     );
     updatedUserData = await updatedUserData.json();
     if (updatedUserData.address !== "") {
+      for (const order of orders) {
+        const updatedOrder = { ...order, confirm: 1 };
+        await fetch(`http://localhost:3006/order/${order._id}`, {
+          method: "PUT",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(updatedOrder),
+        });
+      }
+
       setOpenAdd(true);
       setOpenData(false);
-      console.log("addres is not null");
     } else {
       setOpenAdd(false);
       setOpenData(true);
-      console.log("addres is  null");
     }
-
   }
 
   useEffect(() => {
@@ -49,13 +57,17 @@ function Orders() {
   const getOrders = useCallback(async () => {
     let result = await fetch("http://localhost:3006/orders");
     result = await result.json();
-    const filteredOrders = result.filter((order) => order.email === email);
+    const filteredOrders = result.filter((order) => {
+      if (order.email === email && order.confirm === 0) {
+        return true; // Add order to filteredOrders
+      }
+      return false; // Exclude order from filteredOrders
+    });
     let totalPrice = 0;
     filteredOrders.forEach((order) => {
       const orderTotal = order.price * order.quantity;
       totalPrice += orderTotal;
       setTotalPrice(totalPrice);
-
     });
 
     setOrders(filteredOrders);
@@ -103,7 +115,16 @@ function Orders() {
           </Stack>
         </Stack>
       )}
-      <DialogMessage open={openAdd} onClose={()=>setOpenAdd(false)}order={"final"} totalPrice={totalPrice}text={"🎉 Thank you for your order! Your order has been successfully received and is now being processed 📦"} username={username}/>
+      <DialogMessage
+        open={openAdd}
+        onClose={() => setOpenAdd(false)}
+        order={"final"}
+        totalPrice={totalPrice}
+        text={
+          "🎉 Thank you for your order! Your order has been successfully received and is now being processed 📦"
+        }
+        username={username}
+      />
       <MyDialog open={openData} setOpen={setOpenData} username={username} />
       <Footer />
     </>

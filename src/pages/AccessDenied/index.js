@@ -1,18 +1,13 @@
-import { useNavigate } from "react-router-dom";
+import { useContext } from "react";
+import { Navigate } from "react-router-dom";
+import { EmailContext } from "../../EmailContext";
 
-function AccessDenied() {
-  const navigate = useNavigate();
+export const AuthGuard = ({ children }) => {
+  const {email} = useContext(EmailContext);
 
-  const goToLoginPage = () => {
-    navigate("/login");
-  };
+  if (email==="") {
+    return <Navigate to="/login" />;
+  }
 
-  return (
-    <div>
-      Access Denied please login
-      <button onClick={goToLoginPage}>Login</button>
-    </div>
-  );
-}
-
-export default AccessDenied;
+  return children;
+};

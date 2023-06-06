@@ -9,6 +9,8 @@ import AllProductsPage from "./components/AllProductsPage";
 import Orders from "./components/Orders";
 import UserProducts from "./components/BlogsSection/UserProducts";
 import Likes from "./components/FavoritesPage";
+import ConfirmedOrders from "./components/ConfirmedOrders";
+import Profile from "./components/Profile";
 const Router = () => {
   return (
       <BrowserRouter>
@@ -19,7 +21,9 @@ const Router = () => {
             <Route path="/allProducts" element={<AllProductsPage />} />
             <Route path="/alluserProducts" element={<UserProducts />} />
             <Route path="/singleProduct" element={<SingleProduct />} />
-            <Route path="/orders" element={<Orders />} />
+            <Route path="/profile" element={<Profile/>} />
+            <Route path="/cart" element={<Orders />} />
+            <Route path="/orders" element={<ConfirmedOrders />} />
             <Route path="/favorites" element={<Likes />} />
             <Route path="/allProducts/:id" element={<SingleProduct type={"all"}/>} />
             <Route path="/alluserproducts/:id" element={<SingleProduct type={"user"}/>} />

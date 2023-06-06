@@ -5,6 +5,7 @@ import Button from "../../Login/Button";
 import styles from "./style.module.css";
 import { HeroTitle, HeroTypography } from "../../../StyledComponents";
 import { useTypewriter, Cursor } from "react-simple-typewriter";
+import { Link } from "react-router-dom";
 const HeroLeft = () => {
   const [words] = useTypewriter({
     words: [
@@ -31,9 +32,12 @@ const HeroLeft = () => {
 
       <SmallText text="Transform your home with our exquisite furniture collections" />
       <SmallText text=" to bring both style and comfort to your living spaces. " />
-      <Button text={"Order"} class={"hero-button"} m={"hero"} />
-
-      <Button text={"buy"} class={"hero-button"} />
+      <Link to="/Orders">
+        <Button text={"Order"} class={"hero-button"} m={"hero"} />
+      </Link>
+      <Link to="/allProducts">
+        <Button text={"buy"} class={"hero-button"} />
+      </Link>
     </Box>
   );
 };
