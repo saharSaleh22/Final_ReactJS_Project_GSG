@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext, useState } from "react";
 import Button from "../Login/Button";
 import Dialog from "@mui/material/Dialog";
 import DialogTitle from "@mui/material/DialogTitle";
@@ -7,9 +7,31 @@ import IconButton from "@mui/material/IconButton";
 import CloseIcon from "@mui/icons-material/Close";
 import { Box, Stack, Typography } from "@mui/material";
 import Input from "../Login/Input";
-import { faUser } from "@fortawesome/free-solid-svg-icons";
-import LocationOnIcon from "@mui/icons-material/LocationOn";
+import { faLocationPin, faUser } from "@fortawesome/free-solid-svg-icons";
+import { EmailContext } from "../../EmailContext";
 function MyDialog(props) {
+  const[address,setAddress]=useState("");
+  const[number,setNumber]=useState("");
+
+const {email}=useContext(EmailContext);
+  async function signUp() {
+    const userIdentifier = email; // Replace this with the unique identifier of the user you want to update
+    const updatedUser = {
+      address: address,
+      number: number
+    };
+  
+    let result = await fetch(`http://localhost:3006/signup/${userIdentifier}`, {
+      method: "put",
+      body: JSON.stringify(updatedUser),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+    result = await result;
+    handleClose()
+  }
+
   const handleClose = () => {
     props.setOpen(false);
   };
@@ -27,7 +49,7 @@ function MyDialog(props) {
       }}
     >
       <DialogTitle>
-        Fill in the fields
+      Kindly {props.username}, <br/>complete the required fields first, please.
         <IconButton
           aria-label="close"
           onClick={handleClose}
@@ -58,7 +80,7 @@ function MyDialog(props) {
             type="text"
             placeholder="Mobile Number"
             icon={faUser}
-            onChange={(e) => e.target.value}
+            onChange={(e) => setNumber(e.target.value)}
           />
           <Typography variant="subtitle2" sx={{ mb: -1 }} gutterBottom>
             address
@@ -66,26 +88,13 @@ function MyDialog(props) {
           <Input
             type="text"
             placeholder="street & city"
-            icon={LocationOnIcon}
-            onChange={(e) => e.target.value}
+            icon={faLocationPin}
+            onChange={(e) => setAddress(e.target.value)}
           />
         </Stack>
-        <Typography
-          variant="subtitle2"
-          sx={{ pt: 2, textAlign: "center" }}
-          gutterBottom
-        >
-          total price :$8000
-        </Typography>
-        <Typography
-          variant="subtitle2"
-          sx={{ py: 1, textAlign: "center" }}
-          gutterBottom
-        >
-          after discount :$7200
-        </Typography>
-        <Box sx={{ textAlign: "center" }}>
-          <Button text={"Checkout"} class="hero-button" />
+      
+        <Box sx={{ textAlign: "center" ,mt:4 }}>
+          <Button text={"Done"} class="hero-button" onClick={signUp} />
         </Box>
       </DialogContent>
     </Dialog>

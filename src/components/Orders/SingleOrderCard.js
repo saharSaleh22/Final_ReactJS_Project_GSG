@@ -6,6 +6,23 @@ import Typography from "@mui/material/Typography";
 import DeleteIcon from "@mui/icons-material/Delete";
 import { MyCard } from "../../StyledComponents";
 const SingleOrderCard = (props) => {
+  const deleteOrder = async (orderId) => {
+    try {
+      const response = await fetch(`http://localhost:3006/order/${orderId}`, {
+        method: "DELETE",
+      });
+
+      if (response.ok) {
+              // window.location.reload();
+
+        console.log("Order deleted successfully");
+      } else {
+        console.log("Failed to delete order");
+      }
+    } catch (error) {
+      console.error("An error occurred while deleting the order:", error);
+    }
+  };
   return (
     <MyCard
       sx={{
@@ -39,11 +56,14 @@ const SingleOrderCard = (props) => {
           component="div"
           sx={{ mt: "10%" }}
         >
-          $ {props.card.price} X 2
+          $ {props.card.price} X {props.card.quantity}
         </Typography>
       </CardContent>
       <CardContent>
-        <DeleteIcon sx={{ mt: { xs: 2, sm: 9 }, ml: { xs: 18, sm: 4 } }} />
+        <DeleteIcon
+          sx={{ mt: { xs: 2, sm: 9 }, ml: { xs: 18, sm: 4 } }}
+          onClick={() => deleteOrder(props.card._id)}
+        />
       </CardContent>
     </MyCard>
   );

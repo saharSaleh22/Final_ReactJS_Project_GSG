@@ -19,6 +19,7 @@ function ContactRight() {
         <Grid container spacing={2} columnSpacing={{ sm: 2, md: 4 }}>
           {Data.map((item, i) => (
             <SingleContactItem
+              key={i}
               title={item.title}
               description={item.description}
               icon={item.icon}

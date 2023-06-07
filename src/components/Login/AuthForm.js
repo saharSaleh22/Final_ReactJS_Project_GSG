@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { Alert, Stack, Typography } from "@mui/material";
 import { auth } from "./../../firebase";
 import { signInWithEmailAndPassword } from "firebase/auth";
@@ -15,10 +15,11 @@ import {
 import SocialIcons from "./SocialIcons/SocialIcons";
 
 import { useNavigate } from "react-router-dom";
+import { EmailContext } from "../../EmailContext";
 
 const AuthForm = (props) => {
   const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
+  const {email, setEmail} = useContext(EmailContext);
   const [password, setPassword] = useState("");
   const [statusMessage, setStatusMessage] = useState("");
   const [flag, setFlag] = useState(false);
@@ -27,6 +28,8 @@ const AuthForm = (props) => {
   function logIn() {
     signInWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
+        const loggedInEmail = userCredential.user.email;
+        setEmail(loggedInEmail);
         navigate("/HomePage");
       })
       .catch((error) => {
@@ -37,7 +40,7 @@ const AuthForm = (props) => {
   async function signUp() {
     let result = await fetch("http://localhost:3006/signup", {
       method: "post",
-      body: JSON.stringify({ name, email, password }),
+      body: JSON.stringify({ name, email, password ,address:"",number:""}),
       headers: {
         "Content-Type": "application/json",
       },
@@ -47,11 +50,15 @@ const AuthForm = (props) => {
       .then((userCredential) => {
         setFlag(true);
         setStatusMessage("sign Up successfully");
+          setEmail("");
+      setName("");
+      setPassword("");
       })
       .catch((error) => {
         setFlag(false);
         setStatusMessage("Failed to sign up");
       });
+    
   }
   return (
     <form

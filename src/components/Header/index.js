@@ -6,8 +6,8 @@ import styles from "./style.module.css";
 import MenuItem from "./MenuItem";
 import Data from "./data";
 import customTheme from "../../theme";
-
 function Header(props) {
+
   return (
     <Box
       className={styles.hwrapper}
@@ -21,12 +21,12 @@ function Header(props) {
       <Box className={`paddings ${styles.flexCenter1} ${styles.hcontainer}`}>
         <img src={logo} alt="" width={120} />
         <input className={styles.check} type="checkbox" id="toggle"></input>
-        <label className={styles.toggler} for="toggle">
+        <label className={styles.toggler} htmlFor="toggle">
           <MenuIcon />
         </label>
         <Box className={`flexCenter ${styles.hmenu}`}>
           {Data.map((menu, i) => (
-            <MenuItem href={menu.href} item={menu.item} />
+            <MenuItem href={menu.href} key={i} item={menu.item} email={props.email} />
           ))}
         </Box>
       </Box>

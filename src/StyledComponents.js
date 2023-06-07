@@ -1,7 +1,8 @@
 import { styled } from "@mui/material/styles";
 import Paper from "@mui/material/Paper";
 import customTheme from "./theme";
-import { Box, Button, Card, Divider, Link, Typography } from "@mui/material";
+import { Link } from "react-router-dom";
+import { Box, Button, Card, Divider,  Typography } from "@mui/material";
 
 export const ContactItem = styled(Paper)(({ theme }) => ({
   padding: theme.spacing(1),
@@ -46,8 +47,10 @@ export const ButtonForProduct = styled(Button)((props) => ({
   color: customTheme.palette.custom.light,
   padding: "1.4px 2px 1.4px 4px",
   marginBottom: 2,
-  marginLeft: props.ml === "70%" ? "70%" : "3%",
-  height: "45px",
+  marginLeft: props.ml === "70%" ? "0%" : "3%",
+  marginBottom:5,
+  height: "40px",
+  
   width: props.width === "10%" ? props.width : "110px",
   textTransform: "lowercase",
   fontSize: 16,
@@ -71,7 +74,26 @@ export const StyledCard = styled(Card)(({ theme }) => ({
 
   ":hover": { background: customTheme.palette.custom.hover },
 }));
+export const StyledBadge = styled(Box)({
+  position: 'relative',
+  display: 'inline-block',
+});
 
+export const StyledBadgeCount = styled(Box)({
+  position: 'absolute',
+  top: '-8px',
+  right: '-8px',
+  minWidth: '16px',
+  height: '16px',
+  borderRadius: '50%',
+  backgroundColor: '#f1f1f9',
+  color: '#000',
+  fontSize: '0.8rem',
+  fontWeight: 'bold',
+  display: 'flex',
+  justifyContent: 'center',
+  alignItems: 'center',
+});
 export const StyledItem = styled(Paper)(({ theme }) => ({
   backgroundColor: theme.palette.mode === "dark" ? "#1A2027" : "#fff",
   ...theme.typography.body2,

@@ -36,15 +36,15 @@ const ProductsHome = (props) => {
               Products
             </Typography>
             <Link to="/allProducts">
-              <ButtonForProduct size="small" width={"30%"}>
-                view all 
+              <ButtonForProduct type={"all"}size="small" width={"30%"}>
+                view all
               </ButtonForProduct>
             </Link>
           </Stack>
         </div>
         <MyCarousel items={4}>
           {randomProducts.map((card, i) => (
-            <SingleCard card={card} />
+            <SingleCard type={"all"}card={card} key={i} />
           ))}
         </MyCarousel>
       </div>

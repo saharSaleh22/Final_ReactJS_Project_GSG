@@ -9,7 +9,7 @@ import ExpandMore from "@mui/icons-material/ExpandMore";
 import Stack from "@mui/material/Stack";
 import styles from "./styless.module.css";
 
-import { Typography } from "@mui/material";
+import { Box, Typography } from "@mui/material";
 import Data from "./data";
 import ValueContactTexts from "../VlaueContactTexts";
 const ValueRight = () => {
@@ -40,7 +40,7 @@ const ValueRight = () => {
       >
         <Stack direction={"column"} spacing={3}>
           {Data.map((card, i) => (
-            <>
+            <Box key={i}>
               <ListItemButton onClick={() => handleClick(card.id)}>
                 <ListItemIcon>{card.icon}</ListItemIcon>
                 <ListItemText primary={card.title} />
@@ -64,7 +64,7 @@ const ValueRight = () => {
                   </ListItemButton>
                 </List>
               </Collapse>
-            </>
+            </Box>
           ))}
         </Stack>
       </List>

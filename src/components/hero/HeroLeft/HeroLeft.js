@@ -4,16 +4,27 @@ import SmallText from "../../Texts/smallText";
 import Button from "../../Login/Button";
 import styles from "./style.module.css";
 import { HeroTitle, HeroTypography } from "../../../StyledComponents";
-
+import { useTypewriter, Cursor } from "react-simple-typewriter";
 const HeroLeft = () => {
+  const [words] = useTypewriter({
+    words: [
+      "Comfortable Furniture",
+      "Modern Kitchens",
+      "High-quality Furniture",
+      "Stylish Decoration",
+      "Elegant Rooms",
+    ],
+    loop: {},
+  });
+
   return (
     <Box className={styles.heroLeft}>
       <HeroTitle>
         <HeroTypography variant="h3">
-          {" "}
           Find the Most
           <br />
-          Comfortable Furniture <br />
+          {words}
+          <Cursor /> <br />
           for your home
         </HeroTypography>
       </HeroTitle>

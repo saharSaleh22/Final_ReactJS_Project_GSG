@@ -37,7 +37,7 @@ function ImageSlider() {
         className={styles.swiperContainer}
       >
         {Data.map((slide, i) => (
-          <SwiperSlide className={styles.swiperSlide}>
+          <SwiperSlide key={i} className={styles.swiperSlide}>
             <img src={slide.image} alt="slide_image" />
           </SwiperSlide>
         ))}

@@ -1,5 +1,10 @@
-import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import PersonIcon from "@mui/icons-material/Person";
+import FavIcon from "./Fav";
+import CartIcon from "./orders";
+
+
+
+
 const Data = [
   {
     href: "/HomePage",
@@ -7,11 +12,11 @@ const Data = [
   },
   {
     href: "/allproducts",
-    item: "shipping",
+    item: "products",
   },
   {
-    href: "/allproducts",
-    item: "products",
+    href: "/allUserProducts",
+    item: "pre-owned",
   },
   {
     href: "/orders",
@@ -19,11 +24,16 @@ const Data = [
   },
   {
     href: "/profile",
-    item: <PersonIcon sx={{ ml: 2 }} />,
+    item: <PersonIcon sx={{ ml: 1 }} />,
   },
   {
-    href: "any/link",
-    item: <ShoppingCartIcon sx={{ ml: 2 }} />,
+    href: "/orders",
+    item: <CartIcon/>
+  },       
+
+  {
+    href: "/favorites",
+    item: <FavIcon/>
   },
 ];
 
