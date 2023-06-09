@@ -18,7 +18,7 @@ function Panel(props) {
         <BigText
           text={props.type === "signin" ? "  one of us ?  " : " New here ? "}
         />
-        <SmallText text="anything to be written here " />
+        <SmallText text={props.type === "signin" ? "  sign in now! " : " join us now! "} />
         <Button
           onClick={props.onClick}
           text={props.type === "signin" ? "Sign in" : "Sign up"}

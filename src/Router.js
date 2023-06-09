@@ -13,23 +13,30 @@ import ConfirmedOrders from "./components/ConfirmedOrders";
 import Profile from "./components/Profile";
 const Router = () => {
   return (
-      <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<Layout />}>
-            <Route index element={<Login />} />
-            <Route path="/HomePage" element={<HomePage />} />
-            <Route path="/allProducts" element={<AllProductsPage />} />
-            <Route path="/alluserProducts" element={<UserProducts />} />
-            <Route path="/singleProduct" element={<SingleProduct />} />
-            <Route path="/profile" element={<Profile/>} />
-            <Route path="/cart" element={<Orders />} />
-            <Route path="/orders" element={<ConfirmedOrders />} />
-            <Route path="/favorites" element={<Likes />} />
-            <Route path="/allProducts/:id" element={<SingleProduct type={"all"}/>} />
-            <Route path="/alluserproducts/:id" element={<SingleProduct type={"user"}/>} />
-          </Route>
-        </Routes>
-      </BrowserRouter>
+    <BrowserRouter>
+      <Routes>
+        {" "}
+        <Route index element={<Login />} />
+        <Route path="/HomePage" element={<HomePage />} />
+        <Route path="/" element={<Layout />}>
+          <Route path="/allProducts" element={<AllProductsPage />} />
+          <Route path="/alluserProducts" element={<UserProducts />} />
+          <Route path="/singleProduct" element={<SingleProduct />} />
+          <Route path="/profile" element={<Profile />} />
+          <Route path="/cart" element={<Orders />} />
+          <Route path="/orders" element={<ConfirmedOrders />} />
+          <Route path="/favorites" element={<Likes />} />
+          <Route
+            path="/allProducts/:id"
+            element={<SingleProduct type={"all"} />}
+          />
+          <Route
+            path="/alluserproducts/:id"
+            element={<SingleProduct type={"user"} />}
+          />
+        </Route>
+      </Routes>
+    </BrowserRouter>
   );
 };
 

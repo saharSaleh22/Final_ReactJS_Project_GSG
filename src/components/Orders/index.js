@@ -1,10 +1,8 @@
 import React, { useCallback, useContext, useEffect, useState } from "react";
-import Header from "../Header";
 import SingleOrderCard from "./SingleOrderCard";
 import { Box, Stack, Typography } from "@mui/material";
 import Button from "../Login/Button";
 import MyDialog from "./DialogForm";
-import Footer from "../Footer";
 import { EmailContext } from "../../EmailContext";
 import DialogMessage from "../SingleProduct/DialogMessage";
 
@@ -79,7 +77,6 @@ function Orders() {
 
   return (
     <>
-      <Header Inpage={"pages"} />
       {orders.length === 0 ? (
         <Box
           sx={{
@@ -126,7 +123,6 @@ function Orders() {
         username={username}
       />
       <MyDialog open={openData} setOpen={setOpenData} username={username} />
-      <Footer />
     </>
   );
 }

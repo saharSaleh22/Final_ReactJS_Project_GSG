@@ -43,7 +43,6 @@ function ConfirmedOrders() {
 
   return (
     <>
-      <Header Inpage={"pages"} />
       {orders.length === 0 ? (
         <Box
           sx={{
@@ -75,7 +74,6 @@ function ConfirmedOrders() {
         </Stack>
       )}
 
-      <Footer />
     </>
   );
 }
