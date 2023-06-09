@@ -32,7 +32,7 @@ function DialogMessage(props) {
               sx={{ pt: 2, textAlign: "center" }}
               gutterBottom
             >
-              total price :${props.totalPrice.toFixed(0)}
+              total price :${props.totalPrice}
             </Typography>
             <Typography
               variant="subtitle2"

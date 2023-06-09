@@ -2,9 +2,8 @@ import React, { useCallback } from "react";
 import { useContext, useEffect, useState } from "react";
 import { EmailContext } from "../../EmailContext";
 import { StyledBadge, StyledBadgeCount } from "../../StyledComponents";
-import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 
-function CartIcon() {
+function ConfirmedOrders() {
   const [orders, setOrders] = useState([]);
   const { email } = useContext(EmailContext);
 
@@ -12,7 +11,7 @@ function CartIcon() {
     let result = await fetch("http://localhost:3006/orders");
     result = await result.json();
     const filteredOrders = result.filter((order) => {
-      if (order.email === email && order.confirm === 0) {
+      if (order.email === email && order.confirm === 1) {
         return true; // Add order to filteredOrders
       }
       return false; // Exclude order from filteredOrders
@@ -24,10 +23,10 @@ function CartIcon() {
   }, [getOrders]);
   return (
     <StyledBadge>
-      <ShoppingCartIcon sx={{ ml: 1 }} />
+      <>orders</>
       {orders.length > 0 && <StyledBadgeCount>{orders.length }</StyledBadgeCount>}
     </StyledBadge>
   );
 }
 
-export default CartIcon;
+export default ConfirmedOrders;

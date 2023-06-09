@@ -15,7 +15,6 @@ const BlogsSection = (props) => {
     let result = await fetch("http://localhost:3006/userproducts");
     result = await result.json();
     setProducts(result);
-
   };
   useEffect(() => {
     getProducts();
@@ -43,12 +42,14 @@ const BlogsSection = (props) => {
             />
             <CardContent>
               <Typography variant="subtitle1" color="text.secondary">
-                {card.title.substring(0, 90)}
+                {card.title}
               </Typography>
               <Rating name="half-rating" defaultValue={3.5} precision={0.5} />
 
               <Typography variant="body2" color="text.secondary">
-                {card.description.substring(0, 90)}...
+                {card.description
+                  ? card.description.substring(0, 90) + "..."
+                  : ""}
               </Typography>
             </CardContent>
           </StyledCard>

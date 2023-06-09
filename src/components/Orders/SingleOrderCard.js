@@ -12,15 +12,7 @@ const SingleOrderCard = (props) => {
         method: "DELETE",
       });
 
-      if (response.ok) {
-              // window.location.reload();
-
-        console.log("Order deleted successfully");
-      } else {
-        console.log("Failed to delete order");
-      }
-    } catch (error) {
-      console.error("An error occurred while deleting the order:", error);
+     } catch (error) {
     }
   };
   return (
@@ -60,10 +52,10 @@ const SingleOrderCard = (props) => {
         </Typography>
       </CardContent>
       <CardContent>
-        <DeleteIcon
+       {props.type==="confirm"?<></>:<DeleteIcon
           sx={{ mt: { xs: 2, sm: 9 }, ml: { xs: 18, sm: 4 } }}
           onClick={() => deleteOrder(props.card._id)}
-        />
+        />} 
       </CardContent>
     </MyCard>
   );

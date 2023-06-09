@@ -33,11 +33,9 @@ function UserProducts() {
     if (updatedUserData.address !== "") {
       setOpenAdd(true);
       setOpenData(false);
-      console.log("addres is not null");
     } else {
       setOpenAdd(false);
       setOpenData(true);
-      console.log("addres is  null");
     }
   }
   return (
