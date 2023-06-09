@@ -1,9 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
-import Header from "../Header";
 import SingleCard from "../ProductsHomePage/SingleCard";
 import Grid from "@mui/material/Grid";
 import Box from "@mui/material/Box";
-import Footer from "../Footer";
 import Button from "../Login/Button";
 import { Stack, Typography } from "@mui/material";
 import AddProductDialog from "./AddProductDialog";
@@ -40,7 +38,6 @@ function UserProducts() {
   }
   return (
     <>
-      <Header Inpage={"pages"} />
 
       <Box sx={{ width: "100%", px: 10, py: 2 }}>
         <Stack direction={"row"} spacing={103} sx={{ my: 7, ml: 5 }}>
@@ -63,7 +60,6 @@ function UserProducts() {
       <AddProductDialog open={openAdd} setOpen={setOpenAdd} />
       <MyDialog open={openData} setOpen={setOpenData} />
 
-      <Footer />
     </>
   );
 }

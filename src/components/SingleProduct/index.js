@@ -1,11 +1,9 @@
 import React, { useEffect, useState } from "react";
-import Header from "../Header";
 import Box from "@mui/material/Box";
 import Details from "./Details";
 import { Stack, useMediaQuery, useTheme } from "@mui/material";
 import { StyledItem } from "../../StyledComponents";
 import { useParams } from "react-router-dom";
-import Footer from "../Footer";
 function SingleProduct(props) {
   const theme = useTheme();
   const { id } = useParams();
@@ -36,7 +34,6 @@ function SingleProduct(props) {
 
   return (
     <>
-      <Header Inpage={"pages"} />
       <Box
         sx={{
           width: "100%",
@@ -58,7 +55,6 @@ function SingleProduct(props) {
           <Details product={product} width={width} type={props.type} />
         </Stack>
       </Box>
-      <Footer />
     </>
   );
 }

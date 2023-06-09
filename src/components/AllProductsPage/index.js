@@ -1,11 +1,9 @@
 import React, { useEffect, useState } from "react";
-import Header from "../Header";
 import { Stack } from "@mui/material";
 import Button from "../Login/Button";
 import SingleCard from "../ProductsHomePage/SingleCard";
 import Grid from "@mui/material/Grid";
 import Box from "@mui/material/Box";
-import Footer from "../Footer";
 function AllProductsPage() {
   const [products, setProducts] = useState([]);
   const [selectedButton, setSelectedButton] = useState("All");
@@ -29,7 +27,6 @@ function AllProductsPage() {
   };
   return (
     <>
-      <Header Inpage={"pages"} />
       <Stack spacing={6} direction={"row"} sx={{ my: 10, mx: 25 }}>
         <Button
           text={"All"}
@@ -66,7 +63,6 @@ function AllProductsPage() {
           ))}
         </Grid>
       </Box>
-      <Footer />
     </>
   );
 }

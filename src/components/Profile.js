@@ -1,7 +1,5 @@
 import { Box, Typography } from "@mui/material";
 import React, { useCallback, useContext, useEffect, useState,} from "react";
-import Header from "./Header";
-import Footer from "./Footer";
 import { EmailContext } from "../EmailContext";
 
 function Profile() {
@@ -20,7 +18,6 @@ function Profile() {
       }, [getUsers]);
   return (
     <>
-      <Header Inpage={"pages"} />
       {1 === 1 ? (
         <Box
           sx={{
@@ -37,7 +34,6 @@ function Profile() {
       ) : (
         <Box sx={{ width: "100%", px: 10 }}></Box>
       )}
-      <Footer />
     </>
   );
 }
