@@ -25,9 +25,15 @@ Login and sign up pages .
 ![image](https://github.com/saharSaleh22/Final_ReactJS_Project_GSG/assets/78207579/13ecc7a0-1c48-415b-b858-163c6cbb393e)
 
 ![image](https://github.com/saharSaleh22/Final_ReactJS_Project_GSG/assets/78207579/46957d7f-6236-4126-954f-d708a8ad69cb)
+
 home page that lets user know our policy , the
 location , and our social media links , what we
 do as a company .
+
+![image](https://github.com/saharSaleh22/Final_ReactJS_Project_GSG/assets/78207579/0c2f05c4-455f-43ad-b30b-672eb388ff03)
+
+![image](https://github.com/saharSaleh22/Final_ReactJS_Project_GSG/assets/78207579/421d1714-e04c-42ef-bca3-30ca2e110058)
+
 
 
 
