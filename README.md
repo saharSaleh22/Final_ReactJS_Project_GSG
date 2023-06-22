@@ -14,5 +14,11 @@ from it .
 this figma design is done by me, as the first step i worked on this project to have an idea to what i will work and the features that moderno website will maintain.
 [figma design link](https://www.figma.com/file/dVTtzioCe5p22MxRvVTCor/Moderno-For-furniture-website?type=design&node-id=0-1&mode=design&t=I9dDhLYKUs204Ddq-0)
 
+## MODERNO pages 
+![image](https://github.com/saharSaleh22/Final_ReactJS_Project_GSG/assets/78207579/f92b6910-ce69-4e8b-886e-40ce0a220462)
+![image](https://github.com/saharSaleh22/Final_ReactJS_Project_GSG/assets/78207579/d40e6cdd-de71-4888-bb91-0ac4acd81703)
+Login and sign up pages .
+
+
 
 
