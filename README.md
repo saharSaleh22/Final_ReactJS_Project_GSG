@@ -59,7 +59,6 @@ all the details for the product he selected and he
 could order it .
 ![image](https://github.com/saharSaleh22/Final_ReactJS_Project_GSG/assets/78207579/aba890d5-6bda-419f-8faa-f7ba8d31f06b)
 
-![image](https://github.com/saharSaleh22/Final_ReactJS_Project_GSG/assets/78207579/fcdf5e6f-9bb3-4ab2-a6b5-9b299192dd0a)
 
 pre-owned products page
 
